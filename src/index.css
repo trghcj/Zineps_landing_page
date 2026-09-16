@@ -20,6 +20,19 @@ html, body {
   background: #48C293;
 }
 
+/* ── Kill any scrollbar on inner containers (carrier cubes, etc.) ── */
+.hero-carrier-cube,
+[data-carrier-cube],
+[class*="carrier"],
+[class*="relative isolate"] {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+[data-carrier-cube]::-webkit-scrollbar,
+[class*="carrier"]::-webkit-scrollbar {
+  display: none !important;
+}
+
 /* ── Zineps Design Tokens & Logistics Fintech Aesthetic ── */
 @theme {
   --color-mint-500: #48C293;
