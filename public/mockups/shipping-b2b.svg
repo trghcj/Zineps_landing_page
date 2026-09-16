@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1742 1156" fill="none">
+  <rect width="1742" height="1156" rx="24" fill="#f8fafb"/>
+  <!-- Header bar -->
+  <rect x="60" y="40" width="1622" height="60" rx="12" fill="#ffffff" stroke="#e5e7eb"/>
+  <rect x="80" y="58" width="180" height="16" rx="4" fill="#424242" opacity="0.1"/>
+  <rect x="1400" y="52" width="120" height="32" rx="8" fill="#70CAB9"/>
+  <text x="1430" y="74" font-family="Inter" font-size="12" font-weight="600" fill="white">New Load</text>
+  <!-- Load management table -->
+  <rect x="60" y="120" width="1622" height="500" rx="16" fill="#ffffff" stroke="#e5e7eb"/>
+  <rect x="80" y="150" width="200" height="16" rx="4" fill="#424242" opacity="0.15"/>
+  <line x1="80" y1="185" x2="1660" y2="185" stroke="#e5e7eb"/>
+  <!-- Table headers -->
+  <rect x="80" y="200" width="100" height="12" rx="2" fill="#9ca3af" opacity="0.4"/>
+  <rect x="280" y="200" width="120" height="12" rx="2" fill="#9ca3af" opacity="0.4"/>
+  <rect x="500" y="200" width="100" height="12" rx="2" fill="#9ca3af" opacity="0.4"/>
+  <rect x="700" y="200" width="140" height="12" rx="2" fill="#9ca3af" opacity="0.4"/>
+  <rect x="940" y="200" width="100" height="12" rx="2" fill="#9ca3af" opacity="0.4"/>
+  <rect x="1140" y="200" width="80" height="12" rx="2" fill="#9ca3af" opacity="0.4"/>
+  <line x1="80" y1="225" x2="1660" y2="225" stroke="#f3f4f6"/>
+  <!-- Rows -->
+  <rect x="80" y="240" width="80" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="280" y="240" width="100" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="500" y="240" width="80" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="700" y="240" width="120" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="940" y="235" width="70" height="24" rx="12" fill="#E6FAF5"/>
+  <text x="955" y="251" font-family="Inter" font-size="10" fill="#60948A">Active</text>
+  <rect x="80" y="280" width="90" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="280" y="280" width="110" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="500" y="280" width="70" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="700" y="280" width="130" height="10" rx="2" fill="#f3f4f6"/>
+  <rect x="940" y="275" width="70" height="24" rx="12" fill="#FEF3C7"/>
+  <text x="950" y="291" font-family="Inter" font-size="10" fill="#92400E">Pending</text>
+  <!-- Map area -->
+  <rect x="60" y="640" width="1622" height="460" rx="16" fill="#f0fdf4" stroke="#e5e7eb"/>
+  <rect x="80" y="660" width="160" height="16" rx="4" fill="#424242" opacity="0.1"/>
+  <!-- Route lines -->
+  <path d="M400 800 Q600 700 900 780 T1400 750" stroke="#70CAB9" stroke-width="3" stroke-dasharray="8 4" fill="none"/>
+  <circle cx="400" cy="800" r="8" fill="#70CAB9"/>
+  <circle cx="900" cy="780" r="8" fill="#60948A"/>
+  <circle cx="1400" cy="750" r="8" fill="#4a7569"/>
+</svg>

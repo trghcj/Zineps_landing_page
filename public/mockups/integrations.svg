@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 280" fill="none">
+  <rect width="460" height="280" rx="16" fill="#ffffff"/>
+  <!-- Integration hub -->
+  <circle cx="230" cy="140" r="40" fill="#70CAB9" opacity="0.15"/>
+  <text x="230" y="146" text-anchor="middle" font-family="Inter" font-size="12" font-weight="700" fill="#60948A">API</text>
+  <!-- Connector lines -->
+  <line x1="195" y1="115" x2="120" y2="60" stroke="#70CAB9" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="265" y1="115" x2="340" y2="60" stroke="#70CAB9" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="195" y1="165" x2="120" y2="220" stroke="#70CAB9" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="265" y1="165" x2="340" y2="220" stroke="#70CAB9" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="190" y1="140" x2="80" y2="140" stroke="#70CAB9" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="270" y1="140" x2="380" y2="140" stroke="#70CAB9" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <!-- Platform icons -->
+  <rect x="85" y="40" width="70" height="40" rx="8" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="120" y="65" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#424242">Shopify</text>
+  <rect x="305" y="40" width="70" height="40" rx="8" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="340" y="65" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#424242">WMS</text>
+  <rect x="45" y="120" width="70" height="40" rx="8" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="80" y="145" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#424242">Magento</text>
+  <rect x="345" y="120" width="70" height="40" rx="8" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="380" y="145" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#424242">Bol.com</text>
+  <rect x="85" y="200" width="70" height="40" rx="8" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="120" y="225" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#424242">Woo</text>
+  <rect x="305" y="200" width="70" height="40" rx="8" fill="#f3f4f6" stroke="#e5e7eb"/>
+  <text x="340" y="225" text-anchor="middle" font-family="Inter" font-size="9" font-weight="600" fill="#424242">ERP</text>
+</svg>
