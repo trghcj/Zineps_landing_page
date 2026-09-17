@@ -36,9 +36,16 @@ const GlobalNetworkSection: React.FC = () => {
 
         {/* Cohesive Editorial Metric Ribbon - replaces the 4 floating generic AI boxes */}
         <div className="w-full max-w-5xl mx-auto mb-10 rounded-2xl bg-white border border-slate-200/80 shadow-xs overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {globalHighlights.map((item, idx) => (
-              <div key={idx} className="p-6 text-center sm:text-left flex flex-col justify-between hover:bg-slate-50/40 transition-colors">
+              <div
+                key={idx}
+                className={`p-6 text-center sm:text-left flex flex-col justify-between hover:bg-slate-50/40 transition-colors border-slate-200/80 ${
+                  idx % 2 === 1 ? 'border-l' : ''
+                } ${idx >= 2 ? 'border-t md:border-t-0' : ''} ${
+                  idx > 0 ? 'md:border-l' : ''
+                }`}
+              >
                 <div>
                   <span className="text-3xl sm:text-4xl font-extrabold text-[#17332A] tracking-tight block">
                     {item.value}

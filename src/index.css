@@ -139,10 +139,11 @@ div[style*="animation:scrollDown"]:hover {
 }
 
 /* ── Global Styles & Reset ── */
-* {
+*, ::before, ::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  border-color: #e2e8f0;
 }
 
 html,

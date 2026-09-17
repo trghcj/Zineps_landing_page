@@ -118,9 +118,16 @@ const ReliabilitySection: React.FC = () => {
 
         {/* Step 1: Key Platform Metrics Ribbon - Identical Alignment */}
         <div className="w-full max-w-5xl mx-auto mb-10 rounded-2xl bg-[#FAFCFB] border border-slate-200/80 shadow-xs overflow-hidden">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-slate-200/80">
+          <div className="grid grid-cols-2 md:grid-cols-4">
             {enterpriseSLAs.map((sla, idx) => (
-              <div key={idx} className="p-6 text-center sm:text-left flex flex-col justify-between hover:bg-white transition-colors">
+              <div
+                key={idx}
+                className={`p-6 text-center sm:text-left flex flex-col justify-between hover:bg-white transition-colors border-slate-200/80 ${
+                  idx % 2 === 1 ? 'border-l' : ''
+                } ${idx >= 2 ? 'border-t md:border-t-0' : ''} ${
+                  idx > 0 ? 'md:border-l' : ''
+                }`}
+              >
                 <div>
                   <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#17332A] tracking-tight block">
                     {sla.value}
