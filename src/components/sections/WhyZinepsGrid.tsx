@@ -371,7 +371,7 @@ export const WhyZinepsGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* CARD 04 — GLOBAL SCALE (With Live Failover Mesh Telemetry to Fill Empty Space) */}
+          {/* CARD 04 — GLOBAL SCALE (Unified Telemetry Container matching Card 03 Height) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
@@ -394,65 +394,75 @@ export const WhyZinepsGrid: React.FC = () => {
                   : 'Verzend lokaal of cross-border naar 200+ landen met meer dan 1.000 verzendopties en automatische douanedocumenten.'}
               </p>
 
-              {/* 3 Core Metric Highlights */}
-              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-3.5 overflow-hidden">
-                <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-4 text-center">
-                  <div>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight block">
-                      200+
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-500 mt-0.5 block">
-                      Countries
-                    </span>
-                  </div>
-                  <div className="border-x border-slate-100">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight block">
-                      50+
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-500 mt-0.5 block">
-                      Carriers
-                    </span>
-                  </div>
-                  <div>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-[#17332A] tracking-tight block">
-                      99.9%
-                    </span>
-                    <span className="text-[11px] font-semibold text-slate-500 mt-0.5 block">
-                      SLA Uptime
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Live Automated Failover Corridors Telemetry: Fills the empty space with authentic SaaS data */}
-              <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6 space-y-2.5">
-                <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
+              {/* Unified Global Network Telemetry Container: Perfectly matches Card 03's structure and height */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
+                
+                {/* Telemetry Header */}
+                <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs text-slate-500">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="font-bold text-slate-800 text-[11px] uppercase tracking-wider">
-                      ACTIVE FAILOVER CORRIDORS
-                    </span>
+                    <span className="font-semibold text-slate-700">Global Network Telemetry</span>
                   </div>
-                  <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold">
+                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 text-[11px]">
                     Mesh Active
                   </span>
                 </div>
 
-                {[
-                  { route: 'Amsterdam ➔ Berlin Hub', carrier: 'DHL Parcel Connect', latency: '22h', badge: 'Optimal SLA' },
-                  { route: 'Rotterdam ➔ Paris CDG Depot', carrier: 'DPD Classic Europe', latency: '24h', badge: 'Route Cleared' },
-                  { route: 'London ➔ New York JFK', carrier: 'UPS Worldwide Express', latency: '36h', badge: 'Customs Synced' },
-                ].map((lane, i) => (
-                  <div key={i} className="flex items-center justify-between text-xs p-2 rounded-xl bg-slate-50/70 border border-slate-100">
-                    <div>
-                      <span className="font-bold text-slate-900 block text-[11px]">{lane.route}</span>
-                      <span className="text-[10px] text-slate-500">{lane.carrier} · {lane.latency}</span>
-                    </div>
-                    <span className="text-[10px] font-bold text-[#17332A] bg-[#E9F8F2] px-2 py-0.5 rounded border border-[#48C293]/30">
-                      {lane.badge}
+                {/* 3 Core Metric Highlights */}
+                <div className="grid grid-cols-3 gap-2 sm:gap-4 text-center pt-4 pb-3 items-start">
+                  <div>
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block">
+                      200+
+                    </span>
+                    <span className="text-xs text-slate-400 block font-medium mt-1">
+                      Countries
                     </span>
                   </div>
-                ))}
+                  <div className="border-x border-slate-100">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block">
+                      50+
+                    </span>
+                    <span className="text-xs text-slate-400 block font-medium mt-1">
+                      Carriers
+                    </span>
+                  </div>
+                  <div>
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[#17332A] tracking-tight block">
+                      99.9%
+                    </span>
+                    <span className="text-xs text-slate-400 block font-medium mt-1">
+                      SLA Uptime
+                    </span>
+                  </div>
+                </div>
+
+                {/* Active Failover Corridors Telemetry */}
+                <div className="mt-4 pt-4 border-t border-slate-100 space-y-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                      Active Failover Corridors
+                    </span>
+                    <span className="text-[10px] text-slate-500 font-mono">
+                      &lt;150ms Auto-Failover
+                    </span>
+                  </div>
+
+                  {[
+                    { route: 'Amsterdam ➔ Berlin Hub', carrier: 'DHL Parcel Connect · 22h', badge: 'Optimal SLA' },
+                    { route: 'Rotterdam ➔ Paris CDG Depot', carrier: 'DPD Classic Europe · 24h', badge: 'Route Cleared' },
+                    { route: 'London ➔ New York JFK', carrier: 'UPS Worldwide · 36h', badge: 'Customs Synced' },
+                  ].map((lane, i) => (
+                    <div key={i} className="flex items-center justify-between text-xs p-2.5 rounded-xl bg-slate-50/80 border border-slate-100">
+                      <div>
+                        <span className="font-bold text-slate-900 block text-[11px]">{lane.route}</span>
+                        <span className="text-[10px] text-slate-500">{lane.carrier}</span>
+                      </div>
+                      <span className="text-[10px] font-bold text-[#17332A] bg-[#E9F8F2] px-2 py-0.5 rounded border border-[#48C293]/30">
+                        {lane.badge}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
 
