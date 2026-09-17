@@ -144,15 +144,15 @@ const PartnerRatesSection: React.FC = () => {
             {/* Right Column: Interactive AI Rate Benchmark Card (lg:col-span-7) */}
             <div className="lg:col-span-7 w-full bg-white text-slate-900 rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-2xl">
               {/* Lane Header Bar */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-100">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-slate-100">
+                <div className="min-w-0">
+                  <div className="flex items-center gap-2 mb-1">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
                       LIVE LANE BENCHMARK
                     </span>
                     <span className="text-xs text-slate-400 font-mono">14ms latency</span>
                   </div>
-                  <h3 className="text-lg sm:text-xl font-black text-[#161D1A] mt-1">
+                  <h3 className="text-base sm:text-lg font-extrabold text-[#161D1A] tracking-tight leading-tight">
                     SHIPMENT:{' '}
                     <span className="text-[#17332A]">
                       {activeRoute === 'AMS-BER' ? 'Amsterdam (NL) → Berlin (DE)' : 'Paris (FR) → London (UK)'}
@@ -161,10 +161,10 @@ const PartnerRatesSection: React.FC = () => {
                 </div>
 
                 {/* Route Toggle Buttons */}
-                <div className="flex items-center bg-slate-100 p-1 rounded-full text-xs font-semibold">
+                <div className="flex items-center bg-slate-100 p-1 rounded-full text-xs font-bold shrink-0 self-start sm:self-auto">
                   <button
                     onClick={() => setActiveRoute('AMS-BER')}
-                    className={`px-3 py-1 rounded-full transition-all ${
+                    className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                       activeRoute === 'AMS-BER' ? 'bg-white text-[#161D1A] shadow-xs' : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
@@ -172,7 +172,7 @@ const PartnerRatesSection: React.FC = () => {
                   </button>
                   <button
                     onClick={() => setActiveRoute('PAR-LON')}
-                    className={`px-3 py-1 rounded-full transition-all ${
+                    className={`px-3 py-1 rounded-full transition-all cursor-pointer ${
                       activeRoute === 'PAR-LON' ? 'bg-white text-[#161D1A] shadow-xs' : 'text-slate-500 hover:text-slate-800'
                     }`}
                   >
@@ -192,24 +192,33 @@ const PartnerRatesSection: React.FC = () => {
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
                   {sampleProducts.map((p) => {
                     const isSelected = selectedProduct.id === p.id;
                     return (
                       <button
                         key={p.id}
                         onClick={() => setSelectedProduct(p)}
-                        className={`p-2.5 rounded-xl border text-left transition-all ${
+                        className={`flex flex-col justify-between p-3 rounded-2xl border transition-all text-left min-h-[82px] cursor-pointer ${
                           isSelected
-                            ? 'border-2 border-[#48C293] bg-[#F3FBF7] shadow-xs scale-[1.02]'
-                            : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/50'
+                            ? 'border-2 border-[#48C293] bg-[#F3FBF7] shadow-xs scale-[1.01] ring-2 ring-[#48C293]/20'
+                            : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/70'
                         }`}
                       >
-                        <div className="text-base sm:text-lg mb-1">{p.icon}</div>
-                        <div className="text-xs font-bold text-slate-900 truncate">
-                          {lang === 'en' ? p.name : p.nameNL}
+                        <div className="flex items-center justify-between w-full mb-1">
+                          <span className="text-xl leading-none">{p.icon}</span>
+                          {isSelected && (
+                            <span className="w-2 h-2 rounded-full bg-[#48C293]" />
+                          )}
                         </div>
-                        <div className="text-[11px] text-slate-500">{p.weight}</div>
+                        <div>
+                          <div className="text-xs font-extrabold text-[#161D1A] leading-snug line-clamp-1">
+                            {lang === 'en' ? p.name : p.nameNL}
+                          </div>
+                          <div className="text-[11px] font-medium text-slate-400 mt-0.5">
+                            {p.weight}
+                          </div>
+                        </div>
                       </button>
                     );
                   })}
