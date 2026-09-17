@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useLang } from '@/App';
-import { ArrowRight, Sparkles, Check, Package, Box, ShieldCheck, Truck, Layers } from 'lucide-react';
-import AnimatedCounter from '@/components/ui/AnimatedCounter';
+import { ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
 
 export interface SampleTier {
   id: string;
@@ -24,18 +23,24 @@ interface CarrierQuote {
   baseCost: number;
   transitTime: string;
   reliabilityScore: number;
-  isRecommended: boolean;
   logo: string;
 }
 
 const baseQuotes: CarrierQuote[] = [
+  {
+    carrierName: 'PostNL Global',
+    serviceName: 'PostNL Standard Parcel',
+    baseCost: 4.35,
+    transitTime: '1–2 business days',
+    reliabilityScore: 97.6,
+    logo: '/hero-postnl.svg',
+  },
   {
     carrierName: 'DPD Express',
     serviceName: 'DPD Classic Europe',
     baseCost: 4.65,
     transitTime: 'Next-day delivery',
     reliabilityScore: 99.2,
-    isRecommended: true,
     logo: '/hero-dpd.svg',
   },
   {
@@ -44,24 +49,22 @@ const baseQuotes: CarrierQuote[] = [
     baseCost: 4.82,
     transitTime: '1–2 business days',
     reliabilityScore: 98.4,
-    isRecommended: false,
     logo: '/hero-dhl.svg',
-  },
-  {
-    carrierName: 'PostNL Global',
-    serviceName: 'PostNL Standard Parcel',
-    baseCost: 4.35,
-    transitTime: '1–2 business days',
-    reliabilityScore: 97.6,
-    isRecommended: false,
-    logo: '/hero-postnl.svg',
   },
 ];
 
 const PartnerRatesSection: React.FC = () => {
-  const { lang, t } = useLang();
-  const [selectedTier, setSelectedTier] = useState<SampleTier>(packageTiers[1]!); // Standard
-  const [selectedCarrier, setSelectedCarrier] = useState<string>('DPD Express');
+  const { lang } = useLang();
+  const [selectedTier, setSelectedTier] = useState<SampleTier>(packageTiers[1]!); // Standard Parcel
+  const [selectedCarrier, setSelectedCarrier] = useState<string>('PostNL Global');
+
+  // Find lowest price dynamically
+  const quotesWithCalculated = baseQuotes.map((quote) => ({
+    ...quote,
+    calculatedRate: (quote.baseCost * selectedTier.multiplier).toFixed(2),
+  }));
+
+  const lowestRateVal = Math.min(...quotesWithCalculated.map((q) => parseFloat(q.calculatedRate)));
 
   return (
     <section id="rates" className="w-full py-16 md:py-24 bg-white overflow-hidden scroll-mt-24">
@@ -76,8 +79,10 @@ const PartnerRatesSection: React.FC = () => {
           {/* Ambient Glow */}
           <div className="absolute top-0 right-0 w-[550px] h-[550px] bg-[#48C293]/12 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
-            {/* Left Column: Authentic Human Copy & Benefits */}
+          {/* Balanced Two Columns - Vertically Centered */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center relative z-10">
+            
+            {/* Left Column: Clear Explanation & Evenly Distributed Stats */}
             <div className="lg:col-span-5 flex flex-col text-white">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-[#70CAB9] text-xs font-bold uppercase tracking-wider backdrop-blur-md border border-white/15 mb-6 w-max">
                 <Sparkles className="w-3.5 h-3.5 text-[#70CAB9]" />
@@ -94,23 +99,29 @@ const PartnerRatesSection: React.FC = () => {
                   : 'Logistieke partners op Zineps beschikken over scherpe bulkafspraken bij DHL, PostNL, DPD en meer. Koppel je shop en verzend direct tegen voordelige partnertarieven, gebruik je eigen contracten of combineer beide.'}
               </p>
 
-              {/* 3 Real Metrics */}
-              <div className="grid grid-cols-3 gap-4 border-t border-white/15 pt-6 mb-8">
+              {/* 3 Real Metrics - Perfectly Aligned & Evenly Distributed */}
+              <div className="grid grid-cols-3 gap-2 sm:gap-4 border-t border-white/15 pt-6 mb-8 text-left">
                 <div>
-                  <span className="text-3xl sm:text-4xl font-black text-[#70CAB9] block mb-1">20+</span>
-                  <span className="text-xs text-white/70 font-medium">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#70CAB9] block mb-1 tracking-tight">
+                    20+
+                  </span>
+                  <span className="text-xs text-white/70 font-medium block">
                     {lang === 'en' ? 'Shipping Partners' : 'Partners'}
                   </span>
                 </div>
-                <div>
-                  <span className="text-3xl sm:text-4xl font-black text-[#70CAB9] block mb-1">200+</span>
-                  <span className="text-xs text-white/70 font-medium">
+                <div className="border-x border-white/10 px-2 sm:px-4">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#70CAB9] block mb-1 tracking-tight">
+                    200+
+                  </span>
+                  <span className="text-xs text-white/70 font-medium block">
                     {lang === 'en' ? 'Countries' : 'Landen'}
                   </span>
                 </div>
                 <div>
-                  <span className="text-3xl sm:text-4xl font-black text-[#70CAB9] block mb-1">1,000+</span>
-                  <span className="text-xs text-white/70 font-medium">
+                  <span className="text-3xl sm:text-4xl font-extrabold text-[#70CAB9] block mb-1 tracking-tight">
+                    1,000+
+                  </span>
+                  <span className="text-xs text-white/70 font-medium block">
                     {lang === 'en' ? 'Methods' : 'Methodes'}
                   </span>
                 </div>
@@ -134,9 +145,10 @@ const PartnerRatesSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Right Column: Clean Sample Live Rates Benchmark */}
-            <div className="lg:col-span-7 w-full bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100">
-              {/* Header */}
+            {/* Right Column: Interactive Product Demonstration Panel */}
+            <div className="lg:col-span-7 w-full bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 flex flex-col justify-between">
+              
+              {/* Header Group */}
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-100">
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
@@ -152,9 +164,9 @@ const PartnerRatesSection: React.FC = () => {
                 </span>
               </div>
 
-              {/* Package Weight Tiers */}
-              <div className="my-6">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-3">
+              {/* Parcel Category Selector Group */}
+              <div className="my-5">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2.5">
                   {lang === 'en' ? 'Select parcel category:' : 'Kies pakketcategorie:'}
                 </span>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
@@ -165,16 +177,16 @@ const PartnerRatesSection: React.FC = () => {
                         key={tier.id}
                         type="button"
                         onClick={() => setSelectedTier(tier)}
-                        className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between min-h-[72px] ${
+                        className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between min-h-[70px] cursor-pointer ${
                           isSelected
                             ? 'border-2 border-[#17332A] bg-[#F3FBF7] shadow-xs'
-                            : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50'
+                            : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/80'
                         }`}
                       >
-                        <span className="text-xs font-bold text-slate-800 leading-tight">
+                        <span className={`text-xs font-bold leading-tight block ${isSelected ? 'text-[#17332A]' : 'text-slate-800'}`}>
                           {lang === 'en' ? tier.name : tier.nameNL}
                         </span>
-                        <span className="text-[11px] text-slate-500 font-mono mt-1">
+                        <span className="text-[11px] text-slate-500 font-mono mt-1 block">
                           {tier.weight}
                         </span>
                       </button>
@@ -183,53 +195,55 @@ const PartnerRatesSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Real Carrier Quotes */}
-              <div className="space-y-3">
-                {baseQuotes.map((quote) => {
-                  const calculatedRate = (quote.baseCost * selectedTier.multiplier).toFixed(2);
+              {/* Carrier Rows Group - Fixed Width Vertical Alignment for Prices & Actions */}
+              <div className="space-y-2.5 my-1">
+                {quotesWithCalculated.map((quote) => {
                   const isSelected = selectedCarrier === quote.carrierName;
+                  const isLowest = parseFloat(quote.calculatedRate) === lowestRateVal;
 
                   return (
                     <div
                       key={quote.carrierName}
                       onClick={() => setSelectedCarrier(quote.carrierName)}
-                      className={`p-4 rounded-2xl border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                      className={`p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
                         isSelected
-                          ? 'border-2 border-[#17332A] bg-[#F3FBF7]/60 shadow-sm'
+                          ? 'border-2 border-[#17332A] bg-[#F3FBF7]/70 shadow-sm'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/70'
                       }`}
                     >
-                      <div className="flex items-center gap-3.5">
+                      {/* Left: Carrier Info */}
+                      <div className="flex items-center gap-3.5 flex-1 min-w-0">
                         <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 p-2">
                           <img src={quote.logo} alt={quote.carrierName} className="h-6 w-auto object-contain" />
                         </div>
-                        <div>
+                        <div className="min-w-0">
                           <div className="flex items-center gap-2">
-                            <span className="font-bold text-sm sm:text-base text-slate-900">
+                            <span className="font-bold text-sm sm:text-base text-slate-900 truncate">
                               {quote.carrierName}
                             </span>
-                            {quote.isRecommended && (
-                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#E9F8F2] text-[#17332A] border border-[#48C293]/40">
+                            {isLowest && (
+                              <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-[#E9F8F2] text-[#17332A] border border-[#48C293]/40 shrink-0">
                                 LOWEST RATE
                               </span>
                             )}
                           </div>
-                          <p className="text-xs text-slate-500 mt-0.5">
+                          <p className="text-xs text-slate-500 mt-0.5 truncate">
                             {quote.serviceName} • {quote.transitTime}
                           </p>
                         </div>
                       </div>
 
-                      <div className="flex items-center justify-between sm:justify-end gap-4 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
-                        <div className="text-right">
+                      {/* Right: Fixed-Width Price & Action Area for Perfect Vertical Alignment */}
+                      <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
+                        <div className="w-24 text-right">
                           <div className="text-xl sm:text-2xl font-black text-[#161D1A]">
-                            €{calculatedRate}
+                            €{quote.calculatedRate}
                           </div>
-                          <span className="text-[10px] font-medium text-slate-400">excl. VAT</span>
+                          <span className="text-[10px] font-medium text-slate-400 block">excl. VAT</span>
                         </div>
                         <button
                           type="button"
-                          className={`px-4 py-1.5 rounded-full text-xs font-bold transition-all ${
+                          className={`w-24 py-1.5 rounded-full text-xs font-bold transition-all text-center ${
                             isSelected
                               ? 'bg-[#17332A] text-white'
                               : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -243,7 +257,7 @@ const PartnerRatesSection: React.FC = () => {
                 })}
               </div>
 
-              {/* Bottom Guarantee */}
+              {/* Footer Information Group */}
               <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-2">
                 <span className="flex items-center gap-1.5 font-medium text-[#17332A]">
                   <ShieldCheck className="w-4 h-4 text-[#48C293]" />
@@ -253,7 +267,9 @@ const PartnerRatesSection: React.FC = () => {
                   Pre-negotiated volume discount applied
                 </span>
               </div>
+
             </div>
+
           </div>
         </div>
       </div>
