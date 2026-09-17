@@ -16,6 +16,29 @@ export const TrustedByMarquee: React.FC = () => {
     { name: 'Bol.com', svg: <img src="/hero-bol.svg" alt="Bol.com" className="h-7 w-auto object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all" /> },
   ];
 
+  const stats = [
+    {
+      value: '10,000+',
+      label: 'Active webshops shipping daily',
+      labelNL: 'Actieve webshops die dagelijks verzenden',
+    },
+    {
+      value: '1,000+',
+      label: 'Standard & express shipping methods',
+      labelNL: 'Standaard & express verzendopties',
+    },
+    {
+      value: '200+',
+      label: 'Countries covered worldwide',
+      labelNL: 'Landen wereldwijd bereikbaar',
+    },
+    {
+      value: '300M+',
+      label: 'Parcels routed seamlessly each year',
+      labelNL: 'Pakketten jaarlijks succesvol bezorgd',
+    },
+  ];
+
   return (
     <section className="w-full py-12 md:py-16 bg-white border-y border-slate-100 overflow-hidden">
       {/* Label */}
@@ -44,44 +67,24 @@ export const TrustedByMarquee: React.FC = () => {
         </div>
       </div>
 
-      {/* Human-Made Clean Stats Row with Subtle Dividers */}
+      {/* Clean Stats Row with Guaranteed Non-overlapping Vertical Dividers */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-slate-200/80 pt-4">
-          <div className="flex flex-col items-center lg:items-start lg:pl-4 pt-4 lg:pt-0">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#161D1A] tracking-tight">
-              10,000+
-            </span>
-            <span className="text-xs sm:text-sm font-medium text-slate-500 mt-1.5">
-              {lang === 'en' ? 'Active webshops shipping daily' : 'Actieve webshops die dagelijks verzenden'}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center lg:items-start lg:pl-8 pt-4 lg:pt-0">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#161D1A] tracking-tight">
-              1,000+
-            </span>
-            <span className="text-xs sm:text-sm font-medium text-slate-500 mt-1.5">
-              {lang === 'en' ? 'Standard & express shipping methods' : 'Standaard & express verzendopties'}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center lg:items-start lg:pl-8 pt-4 lg:pt-0">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#161D1A] tracking-tight">
-              200+
-            </span>
-            <span className="text-xs sm:text-sm font-medium text-slate-500 mt-1.5">
-              {lang === 'en' ? 'Countries covered worldwide' : 'Landen wereldwijd bereikbaar'}
-            </span>
-          </div>
-
-          <div className="flex flex-col items-center lg:items-start lg:pl-8 pt-4 lg:pt-0">
-            <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#161D1A] tracking-tight">
-              300M+
-            </span>
-            <span className="text-xs sm:text-sm font-medium text-slate-500 mt-1.5">
-              {lang === 'en' ? 'Parcels routed seamlessly each year' : 'Pakketten jaarlijks succesvol bezorgd'}
-            </span>
-          </div>
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-0 pt-4">
+          {stats.map((stat, idx) => (
+            <div
+              key={idx}
+              className={`flex flex-col items-center lg:items-start px-4 sm:px-8 ${
+                idx !== 0 ? 'lg:border-l lg:border-slate-200' : ''
+              }`}
+            >
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#161D1A] tracking-tight">
+                {stat.value}
+              </span>
+              <span className="text-xs sm:text-sm font-medium text-slate-500 mt-2 text-center lg:text-left leading-relaxed">
+                {lang === 'en' ? stat.label : stat.labelNL}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
