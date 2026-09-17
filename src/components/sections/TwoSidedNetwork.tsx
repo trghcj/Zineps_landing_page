@@ -60,12 +60,14 @@ const TwoSidedNetwork: React.FC = () => {
               </p>
 
               {/* Subtle Supporting Visual Flow: Business → Zineps → Carrier Network */}
-              <div className="flex items-center justify-between gap-2 p-2.5 px-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-600 font-semibold mb-6">
-                <span className="text-slate-700">Business Store</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#48C293] shrink-0" />
-                <span className="text-[#17332A] font-extrabold bg-[#E9F8F2] px-2 py-0.5 rounded">Zineps Engine</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#48C293] shrink-0" />
-                <span className="text-slate-700">Carrier Network</span>
+              <div className="flex items-center justify-between gap-2.5 sm:gap-3 py-3.5 px-4 sm:px-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 text-xs sm:text-[13px] text-slate-600 font-semibold mb-6 min-h-[52px]">
+                <span className="text-slate-700 font-medium">Business Store</span>
+                <ArrowRight className="w-4 h-4 text-[#48C293] shrink-0" />
+                <span className="text-[#17332A] font-bold bg-[#E9F8F2] px-3 py-1.5 rounded-lg border border-[#48C293]/30 shrink-0">
+                  Zineps Engine
+                </span>
+                <ArrowRight className="w-4 h-4 text-[#48C293] shrink-0" />
+                <span className="text-slate-700 font-medium">Carrier Network</span>
               </div>
 
               {/* Feature Checklist with Improved Spacing & Hierarchy */}
@@ -124,12 +126,14 @@ const TwoSidedNetwork: React.FC = () => {
               </p>
 
               {/* Subtle Supporting Visual Flow: Carrier / 3PL → Zineps → Multiple Merchants */}
-              <div className="flex items-center justify-between gap-2 p-2.5 px-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs text-slate-600 font-semibold mb-6">
-                <span className="text-slate-700">Carrier / 3PL</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#17332A] shrink-0" />
-                <span className="text-[#17332A] font-extrabold bg-[#E9F8F2] px-2 py-0.5 rounded">Zineps Platform</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#17332A] shrink-0" />
-                <span className="text-slate-700">Multiple Merchants</span>
+              <div className="flex items-center justify-between gap-2.5 sm:gap-3 py-3.5 px-4 sm:px-5 rounded-2xl bg-slate-50/90 border border-slate-200/80 text-xs sm:text-[13px] text-slate-600 font-semibold mb-6 min-h-[52px]">
+                <span className="text-slate-700 font-medium">Carrier / 3PL</span>
+                <ArrowRight className="w-4 h-4 text-[#17332A] shrink-0" />
+                <span className="text-[#17332A] font-bold bg-[#E9F8F2] px-3 py-1.5 rounded-lg border border-[#48C293]/30 shrink-0">
+                  Zineps Platform
+                </span>
+                <ArrowRight className="w-4 h-4 text-[#17332A] shrink-0" />
+                <span className="text-slate-700 font-medium">Multiple Merchants</span>
               </div>
 
               {/* Feature Checklist with Improved Spacing & Hierarchy */}
