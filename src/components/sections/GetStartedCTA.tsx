@@ -45,11 +45,7 @@ const GetStartedCTA: React.FC = () => {
               <div className="flex flex-col sm:flex-row items-center gap-4 mb-8">
                 <a
                   href="https://app.zineps.com/Account/Register"
-                  style={{
-                    background: 'linear-gradient(135deg, #70CAB9 0%, #48C293 100%)',
-                    color: '#0F231D',
-                  }}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 h-12 px-8 rounded-xl font-extrabold text-base shadow-[0_4px_20px_rgba(112,202,185,0.45)] hover:shadow-[0_6px_28px_rgba(112,202,185,0.65)] hover:scale-105 transition-all"
+                  className="zineps-cta-btn w-full sm:w-auto h-12 px-8 rounded-xl font-bold text-sm sm:text-base"
                 >
                   <span>{lang === 'en' ? 'Start your free trial' : 'Start gratis proefperiode'}</span>
                   <ArrowRight className="w-4 h-4" />
@@ -57,7 +53,7 @@ const GetStartedCTA: React.FC = () => {
 
                 <a
                   href="mailto:info@zineps.com"
-                  className="w-full sm:w-auto inline-flex items-center justify-center h-12 px-7 rounded-xl font-bold text-base border border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm"
+                  className="w-full sm:w-auto inline-flex items-center justify-center h-12 px-7 rounded-xl font-bold text-sm sm:text-base border border-white/30 text-white hover:bg-white/10 hover:border-white/50 transition-all backdrop-blur-sm"
                 >
                   {lang === 'en' ? 'Talk to our team' : 'Neem contact op'}
                 </a>
