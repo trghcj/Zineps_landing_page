@@ -51,25 +51,27 @@ export const FAQSection: React.FC = () => {
               : 'Duidelijke antwoorden over ons verdienmodel, koppelingen, contracten en netwerk.'}
           </p>
 
-          {/* Search Filter Bar */}
-          <div className="relative max-w-md mx-auto">
-            <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2 pointer-events-none" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder={lang === 'en' ? 'Search questions or topics...' : 'Zoek vragen of onderwerpen...'}
-              className="w-full pl-11 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-[#70CAB9] focus:bg-white transition-all shadow-xs"
-            />
-            {searchQuery && (
-              <button
-                type="button"
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-slate-400 hover:text-slate-600 font-medium px-1.5 py-0.5"
-              >
-                {lang === 'en' ? 'Clear' : 'Wissen'}
-              </button>
-            )}
+          {/* Search Filter Bar with Pristine Flex Alignment */}
+          <div className="max-w-md mx-auto">
+            <div className="faq-search-box w-full flex items-center gap-3 px-4 py-3 rounded-xl border border-slate-200 bg-slate-50/70 hover:border-[#70CAB9] focus-within:border-[#70CAB9] focus-within:bg-white focus-within:shadow-[0_0_0_3px_rgba(112,202,185,0.3)] transition-all">
+              <Search className="w-4 h-4 text-[#60948A] shrink-0" />
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder={lang === 'en' ? 'Search questions or topics...' : 'Zoek vragen of onderwerpen...'}
+                className="w-full bg-transparent text-sm text-[#161D1A] placeholder:text-slate-400 focus:outline-none border-none p-0 m-0"
+              />
+              {searchQuery && (
+                <button
+                  type="button"
+                  onClick={() => setSearchQuery('')}
+                  className="text-xs text-slate-400 hover:text-slate-600 font-semibold shrink-0 cursor-pointer px-1.5 py-0.5 rounded-md hover:bg-slate-100 transition-colors"
+                >
+                  {lang === 'en' ? 'Clear' : 'Wissen'}
+                </button>
+              )}
+            </div>
           </div>
         </div>
 
