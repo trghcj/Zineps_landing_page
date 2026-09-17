@@ -6,11 +6,7 @@ import {
   Compass, 
   ArrowRight,
   Sliders,
-  CheckCircle2,
-  Package,
-  QrCode,
-  Truck,
-  Check
+  QrCode
 } from 'lucide-react';
 
 const ProductShowcase: React.FC = () => {
@@ -49,15 +45,15 @@ const ProductShowcase: React.FC = () => {
   ];
 
   return (
-    <section id="workflow" className="w-full py-16 md:py-20 relative bg-zinc-50/60 overflow-hidden border-t border-slate-100 scroll-mt-24">
+    <section id="workflow" className="w-full py-14 md:py-18 relative bg-zinc-50/60 overflow-hidden border-t border-slate-100 scroll-mt-24">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header: Reduced Vertical Whitespace */}
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#E6FAF5] text-[#17332A] text-xs font-bold uppercase tracking-wider mb-3.5 border border-[#48C293]/30">
+        {/* Section Header: Tightly Connected to Showcase (Whitespace Reduced ~40px) */}
+        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+          <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#E6FAF5] text-[#17332A] text-xs font-bold uppercase tracking-wider mb-3 border border-[#48C293]/30">
             {lang === 'en' ? 'HOW IT WORKS' : 'HOE HET WERKT'}
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#161D1A] tracking-tight leading-tight mb-3">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#161D1A] tracking-tight leading-tight mb-2.5">
             {lang === 'en'
               ? 'Smart shipping from label to return.'
               : 'Slimme verzending van label tot retour.'}
@@ -69,11 +65,11 @@ const ProductShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* 38% / 62% Coordinated Interactive Showcase Layout */}
+        {/* 38% / 62% Column Proportions: Mockup as Dominant Centerpiece */}
         <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
           
-          {/* Left Column: Feature List Stack (38% width, compact, perfectly aligned) */}
-          <div className="w-full lg:w-[38%] shrink-0 flex flex-col space-y-3">
+          {/* Left Column: Feature List Stack (38% width, compact padding, perfectly aligned) */}
+          <div className="w-full lg:w-[38%] shrink-0 flex flex-col space-y-2.5">
             {capabilities.map((cap, idx) => {
               const Icon = cap.icon;
               const isSelected = activeTab === idx;
@@ -81,13 +77,13 @@ const ProductShowcase: React.FC = () => {
                 <button
                   key={idx}
                   onClick={() => setActiveTab(idx)}
-                  className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer ${
+                  className={`w-full text-left p-3.5 sm:p-4 rounded-xl border transition-all duration-200 cursor-pointer min-h-[76px] flex items-center ${
                     isSelected
                       ? 'bg-white border-[#17332A] shadow-sm ring-1 ring-[#17332A]/10'
                       : 'bg-white/70 border-slate-200 hover:bg-white hover:border-slate-300'
                   }`}
                 >
-                  <div className="flex items-start gap-3.5">
+                  <div className="flex items-start gap-3.5 w-full">
                     <div
                       className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
                         isSelected
@@ -97,8 +93,10 @@ const ProductShowcase: React.FC = () => {
                     >
                       <Icon className="w-4.5 h-4.5" />
                     </div>
-                    <div>
-                      <h4 className="text-sm sm:text-base font-bold text-[#161D1A] leading-tight">
+                    <div className="flex-1 min-w-0">
+                      <h4 className={`text-sm sm:text-base font-bold leading-tight truncate ${
+                        isSelected ? 'text-[#17332A]' : 'text-[#161D1A]'
+                      }`}>
                         {lang === 'en' ? cap.title : cap.titleNL}
                       </h4>
                       <p className="text-xs text-slate-600 mt-1 leading-snug">
@@ -110,7 +108,7 @@ const ProductShowcase: React.FC = () => {
               );
             })}
 
-            {/* CTA Button Naturally Aligned Below the Stack */}
+            {/* CTA Button Naturally Aligned with Feature Stack */}
             <div className="pt-2">
               <a
                 href="https://app.zineps.com/Account/Register"
@@ -123,7 +121,7 @@ const ProductShowcase: React.FC = () => {
           </div>
 
           {/* Right Column: Prominent Product Mockup Showcase (62% width, +15% visual prominence) */}
-          <div className="w-full lg:w-[62%] min-w-0 rounded-3xl border border-slate-200 bg-white p-3 sm:p-5 shadow-lg overflow-hidden">
+          <div className="w-full lg:w-[62%] min-w-0 rounded-3xl border border-slate-200 bg-white p-3.5 sm:p-6 shadow-lg overflow-hidden">
             {/* macOS Chrome Header */}
             <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
@@ -147,34 +145,34 @@ const ProductShowcase: React.FC = () => {
             </div>
 
             {/* Coordinated Interactive Product Mockup States (150-250ms smooth transition) */}
-            <div className="relative min-h-[380px] sm:min-h-[420px] rounded-2xl bg-[#FAFCFB] border border-slate-200/80 p-4 sm:p-6 flex flex-col justify-between overflow-hidden">
+            <div className="relative min-h-[400px] sm:min-h-[440px] rounded-2xl bg-[#FAFCFB] border border-slate-200/80 p-4 sm:p-6 flex flex-col justify-between overflow-hidden">
               
               {/* STATE 0: Bulk Label Generation */}
               {activeTab === 0 && (
                 <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
                   <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
                       <div>
                         <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                           BATCH FULFILLMENT QUEUE
                         </span>
-                        <h4 className="text-lg font-bold text-slate-900 mt-0.5">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
                           48 Orders Selected for Label Print
                         </h4>
                       </div>
-                      <span className="px-3 py-1.5 rounded-lg bg-[#17332A] text-white text-xs font-bold shadow-xs">
+                      <span className="px-3.5 py-1.5 rounded-lg bg-[#17332A] text-white text-xs font-bold shadow-xs">
                         Print 48 Labels (PDF/ZPL)
                       </span>
                     </div>
 
-                    <div className="mt-4 space-y-2">
+                    <div className="mt-4 space-y-2.5">
                       {[
                         { id: '#ORD-9842', buyer: 'Emma Laurent · Paris (FR)', weight: '1.4 kg', carrier: 'DHL Parcel Connect', badge: 'Label Ready' },
                         { id: '#ORD-9843', buyer: 'Jan de Vries · Amsterdam (NL)', weight: '2.8 kg', carrier: 'PostNL Standard', badge: 'Label Ready' },
                         { id: '#ORD-9844', buyer: 'Sophie Becker · Frankfurt (DE)', weight: '0.9 kg', carrier: 'DPD Classic', badge: 'Label Ready' },
                         { id: '#ORD-9845', buyer: 'Liam Murphy · Dublin (IE)', weight: '3.1 kg', carrier: 'UPS Standard', badge: 'Label Ready' },
                       ].map((row, i) => (
-                        <div key={i} className="p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between text-xs">
+                        <div key={i} className="p-3 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between text-xs">
                           <div className="flex items-center gap-3">
                             <span className="w-4 h-4 rounded bg-[#17332A] text-white flex items-center justify-center text-[10px] font-bold">
                               ✓
@@ -205,12 +203,12 @@ const ProductShowcase: React.FC = () => {
               {activeTab === 1 && (
                 <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
                   <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
                       <div>
                         <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                           LEAST-COST CARRIER ENGINE
                         </span>
-                        <h4 className="text-lg font-bold text-slate-900 mt-0.5">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
                           Amsterdam Hub ➔ Berlin Depot · 2.4 kg Parcel
                         </h4>
                       </div>
@@ -221,7 +219,7 @@ const ProductShowcase: React.FC = () => {
 
                     <div className="mt-4 space-y-2.5">
                       {/* Selected option */}
-                      <div className="p-3 sm:p-3.5 rounded-xl bg-white border-2 border-[#17332A] flex items-center justify-between text-xs shadow-xs">
+                      <div className="p-3.5 sm:p-4 rounded-xl bg-white border-2 border-[#17332A] flex items-center justify-between text-xs shadow-xs">
                         <div className="flex items-center gap-3">
                           <span className="w-5 h-5 rounded-full bg-[#17332A] text-[#70CAB9] flex items-center justify-center font-bold text-xs">
                             ✓
@@ -283,12 +281,12 @@ const ProductShowcase: React.FC = () => {
               {activeTab === 2 && (
                 <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
                   <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
                       <div>
                         <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                           CUSTOMER BRANDED TRACKING
                         </span>
-                        <h4 className="text-lg font-bold text-slate-900 mt-0.5">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
                           tracking.yourstore.com / #ZN-94821
                         </h4>
                       </div>
@@ -336,12 +334,12 @@ const ProductShowcase: React.FC = () => {
               {activeTab === 3 && (
                 <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
                   <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
                       <div>
                         <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
                           SELF-SERVICE RETURNS PORTAL
                         </span>
-                        <h4 className="text-lg font-bold text-slate-900 mt-0.5">
+                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
                           Instant Digital Return Pass #RET-4819
                         </h4>
                       </div>

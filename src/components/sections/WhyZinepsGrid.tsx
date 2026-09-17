@@ -8,8 +8,9 @@ const WhyZinepsGrid: React.FC = () => {
   return (
     <section id="why-zineps" className="w-full py-16 md:py-24 relative bg-white overflow-hidden scroll-mt-24">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-14 sm:mb-16">
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3FBF7] border border-[#48C293]/30 shadow-xs mb-4">
             <span className="w-2 h-2 rounded-full bg-[#48C293]" />
             <span className="text-xs font-semibold text-[#17332A] uppercase tracking-wider">
@@ -23,7 +24,7 @@ const WhyZinepsGrid: React.FC = () => {
               : 'Alles wat je nodig hebt voor succesvolle verzending.'}
           </h2>
 
-          <p className="text-base sm:text-lg text-[#52605B] leading-relaxed">
+          <p className="text-base sm:text-lg text-[#52605B] leading-relaxed max-w-2xl mx-auto">
             {lang === 'en'
               ? 'Consolidate multi-carrier fulfillment, rate intelligence, branded tracking, and returns into one clean platform.'
               : 'Van multi-carrier verzending tot retouren, live analytics en partnerbeheer — samengebracht in één betrouwbare infrastructuur.'}
@@ -33,46 +34,46 @@ const WhyZinepsGrid: React.FC = () => {
         {/* 4 Clean Human-Made Bento Cards (2x2 Grid) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full items-stretch">
           
-          {/* CARD 01 — CENTRAL HUB */}
+          {/* CARD 01 — CENTRAL HUB (Primary Focus: Workflow / Process) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
-              {/* Header: Exact Same Height, Padding & Metadata Baseline */}
-              <div className="h-6 flex items-center justify-between mb-5">
+              {/* Header: Exact Same Eyebrow Row & Baseline */}
+              <div className="h-6 flex items-center justify-between mb-4 sm:mb-5">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
                   01 • Central Hub
                 </span>
                 <span className="text-xs font-semibold text-slate-500">All-in-one</span>
               </div>
 
-              {/* Title with Consistent Min-Height for Perfect Baseline Alignment */}
-              <h3 className="text-2xl sm:text-[26px] font-bold text-[#161D1A] tracking-tight leading-snug mb-3 min-h-[3.75rem] flex items-start">
+              {/* Title with Strict Min-Height for Baseline Alignment */}
+              <h3 className="text-2xl sm:text-[28px] font-bold text-[#161D1A] tracking-tight leading-snug mb-2 sm:mb-3 min-h-[3.75rem] flex items-start">
                 {lang === 'en' ? 'One platform for everything.' : 'Eén platform voor al je logistiek.'}
               </h3>
 
-              {/* Subtitle with Consistent Min-Height */}
+              {/* Subtitle with Strict Min-Height */}
               <p className="text-sm sm:text-base text-[#52605B] leading-relaxed mb-6 min-h-[4.5rem] flex items-start">
                 {lang === 'en'
                   ? 'Manage all your orders, carrier accounts, tracking notifications, and reverse logistics in one place. No more switching between separate carrier portals.'
                   : 'Beheer al je bestellingen, vervoerderscontracten, tracking-e-mails en retouren in één overzichtelijke omgeving. Nooit meer inloggen bij losse vervoerders.'}
               </p>
 
-              {/* Operational Process Workflow Timeline with Column Alignment */}
-              <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
-                <div className="relative space-y-4">
-                  {/* Subtle connecting process line */}
-                  <div className="absolute left-3 top-3 bottom-3 w-px bg-slate-200 z-0" />
+              {/* Workflow Process: Primary Visual Focal Point with Connected Sequence & Aligned Columns */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
+                <div className="relative space-y-4 sm:space-y-5">
+                  {/* Subtle connecting vertical process line */}
+                  <div className="absolute left-3.5 top-3.5 bottom-3.5 w-px bg-slate-200 z-0" />
 
                   {/* Step 1 */}
                   <div className="relative z-10 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0">
+                      <div className="w-7 h-7 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs">
                         1
                       </div>
-                      <span className="font-semibold text-xs text-slate-800">
+                      <span className="font-semibold text-xs sm:text-sm text-slate-800">
                         Order imported from webshop
                       </span>
                     </div>
-                    <span className="font-mono text-[11px] text-slate-500 bg-slate-50 px-2 py-0.5 rounded border border-slate-100 shrink-0 text-right">
+                    <span className="w-36 font-mono text-[11px] text-slate-500 bg-slate-50 px-2.5 py-1 rounded border border-slate-100 shrink-0 text-right">
                       Shopify #4829
                     </span>
                   </div>
@@ -80,14 +81,14 @@ const WhyZinepsGrid: React.FC = () => {
                   {/* Step 2 */}
                   <div className="relative z-10 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0">
+                      <div className="w-7 h-7 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs">
                         2
                       </div>
-                      <span className="font-semibold text-xs text-slate-800">
+                      <span className="font-semibold text-xs sm:text-sm text-slate-800">
                         Cheapest carrier matched
                       </span>
                     </div>
-                    <span className="font-bold text-[11px] text-[#17332A] bg-[#E9F8F2] px-2 py-0.5 rounded border border-[#70CAB9]/30 shrink-0 text-right">
+                    <span className="w-36 font-bold text-[11px] text-[#17332A] bg-[#E9F8F2] px-2.5 py-1 rounded border border-[#70CAB9]/30 shrink-0 text-right">
                       DHL Parcel · €2.84
                     </span>
                   </div>
@@ -95,14 +96,14 @@ const WhyZinepsGrid: React.FC = () => {
                   {/* Step 3 */}
                   <div className="relative z-10 flex items-center justify-between gap-3">
                     <div className="flex items-center gap-3">
-                      <div className="w-6 h-6 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0">
+                      <div className="w-7 h-7 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs">
                         3
                       </div>
-                      <span className="font-semibold text-xs text-slate-800">
+                      <span className="font-semibold text-xs sm:text-sm text-slate-800">
                         Label printed & tracking dispatched
                       </span>
                     </div>
-                    <span className="font-semibold text-[11px] text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200 shrink-0 text-right">
+                    <span className="w-36 font-semibold text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 shrink-0 text-right">
                       100% Automated
                     </span>
                   </div>
@@ -117,11 +118,11 @@ const WhyZinepsGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* CARD 02 — INTEGRATIONS */}
+          {/* CARD 02 — INTEGRATIONS (Primary Focus: Integration Matrix) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
-              <div className="h-6 flex items-center justify-between mb-5">
+              <div className="h-6 flex items-center justify-between mb-4 sm:mb-5">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
                   02 • Integrations
                 </span>
@@ -129,7 +130,7 @@ const WhyZinepsGrid: React.FC = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-[26px] font-bold text-[#161D1A] tracking-tight leading-snug mb-3 min-h-[3.75rem] flex items-start">
+              <h3 className="text-2xl sm:text-[28px] font-bold text-[#161D1A] tracking-tight leading-snug mb-2 sm:mb-3 min-h-[3.75rem] flex items-start">
                 {lang === 'en' ? 'Fast integrations with your tools.' : 'Koppel direct met jouw webshop.'}
               </h3>
 
@@ -140,7 +141,7 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Koppel je shops en marktplaatsen naadloos. Orders worden automatisch realtime gesynchroniseerd zonder handmatig overtypen.'}
               </p>
 
-              {/* 3×2 Integration Grid with Identical Tile Dimensions and Refined Hierarchy */}
+              {/* 3×2 Integration Matrix with Identical Tile Dimensions & Refined Hierarchy */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                 {[
                   { name: 'Shopify', desc: 'Direct Store Sync' },
@@ -152,7 +153,7 @@ const WhyZinepsGrid: React.FC = () => {
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="h-[72px] p-3 rounded-xl bg-white border border-slate-200 flex flex-col justify-center shadow-2xs hover:border-slate-300 transition-all"
+                    className="h-[76px] p-3.5 rounded-xl bg-white border border-slate-200 flex flex-col justify-center shadow-2xs hover:border-slate-300 transition-all"
                   >
                     <span className="font-bold text-xs text-slate-900 leading-tight block">
                       {item.name}
@@ -172,11 +173,11 @@ const WhyZinepsGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* CARD 03 — COST CONTROL */}
+          {/* CARD 03 — COST CONTROL (Primary Focus: Analytics / KPI Dominance) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
-              <div className="h-6 flex items-center justify-between mb-5">
+              <div className="h-6 flex items-center justify-between mb-4 sm:mb-5">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
                   03 • Cost Control
                 </span>
@@ -184,7 +185,7 @@ const WhyZinepsGrid: React.FC = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-[26px] font-bold text-[#161D1A] tracking-tight leading-snug mb-3 min-h-[3.75rem] flex items-start">
+              <h3 className="text-2xl sm:text-[28px] font-bold text-[#161D1A] tracking-tight leading-snug mb-2 sm:mb-3 min-h-[3.75rem] flex items-start">
                 {lang === 'en' ? 'Real-time cost transparency.' : 'Volledig inzicht in verzendkosten.'}
               </h3>
 
@@ -195,44 +196,40 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Volledige transparantie over brandstoftoeslagen, piekkosten en vervoerdersprestaties per individueel pakket.'}
               </p>
 
-              {/* Two Prominent KPIs + Subtle Secondary Trend Sparkline */}
-              <div className="p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
-                <div className="flex items-center justify-between pb-3 border-b border-slate-100 text-xs text-slate-500">
+              {/* Two Prominent KPIs + Secondary Trend Sparkline using only existing data */}
+              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
+                <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs text-slate-500">
                   <span className="font-medium">Monthly Fulfillment Audit</span>
-                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200">
+                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
                     All invoices reconciled
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-3.5 items-end">
+                <div className="grid grid-cols-2 gap-4 pt-4 items-end">
                   {/* KPI 1: Cost */}
                   <div>
                     <span className="text-xs text-slate-400 block font-medium">Avg Cost / Parcel</span>
-                    <div className="flex items-baseline gap-2 mt-0.5">
-                      <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                        €2.41
-                      </span>
-                    </div>
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block mt-1">
+                      €2.41
+                    </span>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
                       ↓ €0.84 saved vs list rate
                     </span>
                   </div>
 
-                  {/* KPI 2: On-Time Performance + Sparkline */}
+                  {/* KPI 2: On-Time Performance + Secondary Sparkline */}
                   <div>
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-slate-400 block font-medium">On-Time Performance</span>
-                      {/* Subtle mini sparkline showing cost reduction curve */}
-                      <svg className="w-14 h-5 text-emerald-600 shrink-0" viewBox="0 0 56 20" fill="none">
-                        <path d="M2 17 L16 13 L30 14 L42 6 L54 4" stroke="#48C293" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                        <circle cx="54" cy="4" r="2.5" fill="#17332A" />
+                      {/* Secondary abstract analytics trend sparkline */}
+                      <svg className="w-16 h-6 text-[#48C293] shrink-0" viewBox="0 0 64 24" fill="none">
+                        <path d="M2 20 L18 15 L34 16 L48 8 L62 5" stroke="#48C293" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                        <circle cx="62" cy="5" r="2.5" fill="#17332A" />
                       </svg>
                     </div>
-                    <div className="flex items-baseline gap-2 mt-0.5">
-                      <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-                        99.4%
-                      </span>
-                    </div>
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block mt-1">
+                      99.4%
+                    </span>
                     <span className="text-[11px] text-slate-500 block mt-1">
                       Across all connected carriers
                     </span>
@@ -248,11 +245,11 @@ const WhyZinepsGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* CARD 04 — GLOBAL SCALE */}
+          {/* CARD 04 — GLOBAL SCALE (Primary Focus: Network Reach / Prominent Metrics) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
-              <div className="h-6 flex items-center justify-between mb-5">
+              <div className="h-6 flex items-center justify-between mb-4 sm:mb-5">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
                   04 • Global Scale
                 </span>
@@ -260,7 +257,7 @@ const WhyZinepsGrid: React.FC = () => {
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl sm:text-[26px] font-bold text-[#161D1A] tracking-tight leading-snug mb-3 min-h-[3.75rem] flex items-start">
+              <h3 className="text-2xl sm:text-[28px] font-bold text-[#161D1A] tracking-tight leading-snug mb-2 sm:mb-3 min-h-[3.75rem] flex items-start">
                 {lang === 'en' ? 'Global coverage you can depend on.' : 'Wereldwijde dekking waarop je bouwt.'}
               </h3>
 
@@ -271,26 +268,26 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Verzend lokaal of cross-border naar 200+ landen met meer dan 1.000 verzendopties en automatische douanedocumenten.'}
               </p>
 
-              {/* 3 Prominent Metrics with Subtle Integrated Abstract Network Lines */}
-              <div className="relative p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6 overflow-hidden">
+              {/* Effective Space Use: 3 Strong Metrics with Subtle Integrated Global Network Graphic */}
+              <div className="relative p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6 overflow-hidden">
                 {/* Subtle abstract network connecting lines */}
                 <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none opacity-30"
+                  className="absolute inset-0 w-full h-full pointer-events-none opacity-25"
                   xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 320 80"
+                  viewBox="0 0 360 90"
                   fill="none"
                   preserveAspectRatio="none"
                 >
-                  <path d="M30 40 Q90 15 160 40 T290 40" stroke="#70CAB9" strokeWidth="1" strokeDasharray="3 3" />
-                  <path d="M50 55 Q130 65 200 45 T270 30" stroke="#70CAB9" strokeWidth="1" strokeDasharray="4 4" />
-                  <circle cx="50" cy="40" r="3" fill="#48C293" />
-                  <circle cx="160" cy="40" r="3" fill="#48C293" />
-                  <circle cx="270" cy="35" r="3" fill="#48C293" />
+                  <path d="M30 45 Q110 15 180 45 T330 45" stroke="#70CAB9" strokeWidth="1.2" strokeDasharray="4 4" />
+                  <path d="M50 65 Q140 75 220 50 T310 35" stroke="#70CAB9" strokeWidth="1.2" strokeDasharray="4 4" />
+                  <circle cx="50" cy="45" r="3.5" fill="#48C293" />
+                  <circle cx="180" cy="45" r="3.5" fill="#48C293" />
+                  <circle cx="310" cy="35" r="3.5" fill="#48C293" />
                 </svg>
 
                 <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-4 text-center">
                   <div>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight block">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block">
                       200+
                     </span>
                     <span className="text-xs font-semibold text-slate-600 mt-1 block">
@@ -298,7 +295,7 @@ const WhyZinepsGrid: React.FC = () => {
                     </span>
                   </div>
                   <div className="border-x border-slate-100">
-                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight block">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block">
                       50+
                     </span>
                     <span className="text-xs font-semibold text-slate-600 mt-1 block">
@@ -306,7 +303,7 @@ const WhyZinepsGrid: React.FC = () => {
                     </span>
                   </div>
                   <div>
-                    <span className="text-2xl sm:text-3xl font-extrabold text-[#17332A] tracking-tight block">
+                    <span className="text-3xl sm:text-4xl font-extrabold text-[#17332A] tracking-tight block">
                       99.9%
                     </span>
                     <span className="text-xs font-semibold text-slate-600 mt-1 block">
