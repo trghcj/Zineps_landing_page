@@ -11,21 +11,13 @@ import {
   ArrowUpRight,
   Code2,
   ShieldCheck,
-  BarChart2,
+  Package,
+  Check,
+  Store
 } from 'lucide-react';
 
 const WhyZinepsGrid: React.FC = () => {
   const { lang, t } = useLang();
-  const [activeTooltip, setActiveTooltip] = useState<number | null>(4);
-
-  const analyticsPoints = [
-    { month: 'Jul', cost: 3.42, volume: '18k' },
-    { month: 'Aug', cost: 3.18, volume: '24k' },
-    { month: 'Sep', cost: 2.94, volume: '32k' },
-    { month: 'Oct', cost: 2.65, volume: '41k' },
-    { month: 'Nov', cost: 2.41, volume: '58k' },
-    { month: 'Dec', cost: 2.38, volume: '65k' },
-  ];
 
   return (
     <section id="why-zineps" className="w-full py-16 md:py-24 relative bg-white overflow-hidden scroll-mt-24">
@@ -35,275 +27,219 @@ const WhyZinepsGrid: React.FC = () => {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F3FBF7] border border-[#48C293]/30 shadow-xs mb-4">
             <span className="w-2 h-2 rounded-full bg-[#48C293]" />
             <span className="text-xs font-semibold text-[#17332A] uppercase tracking-wider">
-              {lang === 'en' ? 'MODULAR INFRASTRUCTURE' : 'MODULAIRE LOGISTIEKE INFRASTRUCTUUR'}
+              {lang === 'en' ? 'MODULAR INFRASTRUCTURE' : 'MODULAIRE INFRASTRUCTUUR'}
             </span>
           </div>
 
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-[#161D1A] tracking-tight leading-[1.12] mb-6">
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-[#161D1A] tracking-tight leading-tight mb-4">
             {lang === 'en'
-              ? 'Why Zineps is the operating system for modern shipping.'
-              : 'Waarom Zineps hét besturingssysteem is voor e-commerce.'}
+              ? 'Everything you need for successful shipping.'
+              : 'Alles wat je nodig hebt voor succesvolle verzending.'}
           </h2>
 
           <p className="text-base sm:text-lg text-[#52605B] leading-relaxed">
             {lang === 'en'
-              ? 'Everything from multi-carrier fulfillment to returns, analytics, and partner management — engineered as an ultra-fast, connected infrastructure.'
-              : 'Van multi-carrier verzending tot retouren, live analytics en partnerbeheer — samengebracht in één razendsnelle, betrouwbare infrastructuur.'}
+              ? 'Consolidate multi-carrier fulfillment, rate intelligence, branded tracking, and returns into one clean platform.'
+              : 'Van multi-carrier verzending tot retouren, live analytics en partnerbeheer — samengebracht in één betrouwbare infrastructuur.'}
           </p>
         </div>
 
-        {/* 4-Card Bento Grid Layout (Fintech / Linear Style) */}
+        {/* 4 Clean Human-Made Bento Cards */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full items-stretch">
           {/* Card 1: One platform for everything */}
-          <div className="w-full h-auto min-h-[220px] rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200/80 hover:border-[#48C293]/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden">
+          <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
-                  01 • Centralized Logistics Hub
+                  01 • Central Hub
                 </span>
-                <span className="text-xs font-mono font-bold text-slate-400">All-in-one</span>
+                <span className="text-xs font-medium text-slate-400">All-in-one</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3 group-hover:text-[#17332A] transition-colors">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3">
                 {lang === 'en' ? 'One platform for everything.' : 'Eén platform voor al je logistiek.'}
               </h3>
 
               <p className="text-sm sm:text-base text-[#52605B] leading-relaxed mb-6">
                 {lang === 'en'
-                  ? 'Consolidate orders, labels, carrier selection rules, branded tracking, and reverse logistics into a single high-performance control plane. Eliminate fragmented portal logins and siloed carrier contracts.'
-                  : 'Centraliseer bestellingen, labels, routeringsregels, branded tracking en retouren in één centrale cockpit. Nooit meer los inloggen in tientallen vervoerdersportalen.'}
+                  ? 'Manage all your orders, carrier accounts, tracking notifications, and reverse logistics in one place. No more switching between separate carrier portals.'
+                  : 'Beheer al je bestellingen, vervoerderscontracten, tracking-e-mails en retouren in één overzichtelijke omgeving. Nooit meer inloggen bij losse vervoerders.'}
               </p>
 
-              {/* Interactive Mini UI: Unified Pipeline Rules */}
-              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs mb-6 space-y-3">
-                <div className="flex items-center justify-between text-xs font-semibold pb-2.5 border-b border-slate-100 text-slate-500">
-                  <span>Automated Routing Rule #104</span>
-                  <span className="text-[#48C293] font-bold">Active in Production</span>
+              {/* Clean Human Workflow Timeline */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6 space-y-3">
+                <div className="flex items-center gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#E9F8F2] text-[#17332A] flex items-center justify-center font-bold shrink-0">
+                    1
+                  </div>
+                  <div className="flex-1 flex items-center justify-between">
+                    <span className="font-semibold text-slate-800">Order imported from webshop</span>
+                    <span className="text-[11px] font-mono text-slate-400">Shopify #4829</span>
+                  </div>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
-                  <div className="px-3.5 py-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-center">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1 block">Condition</span>
-                    <span className="font-bold text-slate-800 text-xs leading-tight">Destination: EU Zone 1</span>
+                <div className="flex items-center gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#E9F8F2] text-[#17332A] flex items-center justify-center font-bold shrink-0">
+                    2
                   </div>
-                  <div className="px-3.5 py-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-center">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1 block">AI Evaluation</span>
-                    <span className="font-bold text-slate-800 text-xs leading-tight">Lowest SLA latency</span>
+                  <div className="flex-1 flex items-center justify-between">
+                    <span className="font-semibold text-slate-800">Cheapest carrier matched</span>
+                    <span className="text-[11px] font-bold text-[#17332A] bg-[#E9F8F2] px-2 py-0.5 rounded">DHL Parcel · €2.84</span>
                   </div>
-                  <div className="px-3.5 py-3 rounded-xl bg-[#F3FBF7] border border-[#48C293]/40 flex flex-col justify-center">
-                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#17332A] mb-1 block">Matched Carrier</span>
-                    <span className="font-bold text-[#17332A] text-xs leading-tight">DHL Express (€2.84)</span>
+                </div>
+
+                <div className="flex items-center gap-3 text-xs">
+                  <div className="w-6 h-6 rounded-full bg-[#E9F8F2] text-[#17332A] flex items-center justify-center font-bold shrink-0">
+                    3
+                  </div>
+                  <div className="flex-1 flex items-center justify-between">
+                    <span className="font-semibold text-slate-800">Label printed & tracking dispatched</span>
+                    <span className="text-[11px] text-emerald-600 font-semibold">100% Automated</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-              <span className="text-xs font-bold text-[#17332A]">
-                100% Unified Control • Zero Fragmented Logins
-              </span>
-              <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-[#48C293] group-hover:border-[#48C293] transition-colors">
-                <ArrowUpRight className="w-4 h-4" />
-              </div>
+            <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-[#17332A]">
+              <span>Zero fragmented portal logins</span>
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#17332A] transition-colors" />
             </div>
           </div>
 
-          {/* Card 2: Fast integrations */}
-          <div className="w-full h-auto min-h-[220px] rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200/80 hover:border-[#48C293]/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden">
+          {/* Card 2: Fast integrations with your tools */}
+          <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider shrink-0">
-                  02 • Plug & Play Ecosystem
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
+                  02 • Integrations
                 </span>
-                <span className="text-xs font-mono font-bold text-slate-400">&lt;5 min</span>
+                <span className="text-xs font-medium text-slate-400">&lt;5 min setup</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3 group-hover:text-[#17332A] transition-colors">
-                {lang === 'en' ? 'Fast integrations.' : 'Koppel in enkele minuten.'}
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3">
+                {lang === 'en' ? 'Fast integrations with your tools.' : 'Koppel direct met jouw webshop.'}
               </h3>
 
-              <p className="text-sm text-[#52605B] leading-relaxed mb-6">
+              <p className="text-sm sm:text-base text-[#52605B] leading-relaxed mb-6">
                 {lang === 'en'
-                  ? 'Connect your shops, marketplaces, and ERPs seamlessly. Orders sync automatically with zero code required.'
-                  : 'Koppel je shops en marktplaatsen naadloos. Orders worden automatisch realtime gesynchroniseerd.'}
+                  ? 'Connect your online stores, marketplaces, and ERP systems seamlessly. Orders and tracking numbers sync automatically in real time.'
+                  : 'Koppel je shops en marktplaatsen naadloos. Orders worden automatisch realtime gesynchroniseerd zonder handmatig overtypen.'}
               </p>
 
-              {/* Visual Ecosystem Chips: Shopify, WooCommerce, Amazon, Bol.com, Exact */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+              {/* Clean Human Neutral Brand Badges (No Neon Rainbow) */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 mb-6">
                 {[
-                  { name: 'Shopify', desc: 'Auto order sync', color: 'text-emerald-800 bg-emerald-50/80 border-emerald-200' },
-                  { name: 'WooCommerce', desc: 'Direct plugin', color: 'text-purple-800 bg-purple-50/80 border-purple-200' },
-                  { name: 'Bol.com', desc: 'LVB & Partner API', color: 'text-blue-800 bg-blue-50/80 border-blue-200' },
-                  { name: 'Amazon', desc: 'FBA & FBM sync', color: 'text-amber-800 bg-amber-50/80 border-amber-200' },
-                  { name: 'Exact Online', desc: 'ERP accounting', color: 'text-rose-800 bg-rose-50/80 border-rose-200' },
-                  { name: 'REST & Webhooks', desc: 'Developer first', color: 'text-slate-800 bg-slate-100 border-slate-200' },
+                  { name: 'Shopify', desc: 'Direct Store Sync' },
+                  { name: 'WooCommerce', desc: 'Plugin Connected' },
+                  { name: 'Bol.com', desc: 'Partner API' },
+                  { name: 'Amazon', desc: 'FBA & FBM' },
+                  { name: 'Exact Online', desc: 'Accounting Sync' },
+                  { name: 'REST & GraphQL', desc: 'Custom API' },
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className={`px-4 py-3 rounded-xl border flex flex-col justify-center gap-1 shadow-xs transition-transform hover:-translate-y-0.5 ${item.color}`}
+                    className="p-3 rounded-xl bg-white border border-slate-200 flex flex-col justify-center shadow-2xs hover:border-slate-300 transition"
                   >
-                    <span className="font-bold text-xs sm:text-sm tracking-tight leading-none">{item.name}</span>
-                    <span className="text-[11px] opacity-80 leading-snug">{item.desc}</span>
+                    <span className="font-bold text-xs text-slate-900">{item.name}</span>
+                    <span className="text-[10px] text-slate-500 mt-0.5">{item.desc}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-              <span className="text-xs font-bold text-[#17332A]">
-                50+ Pre-built Apps & Connectors
-              </span>
-              <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-[#48C293] group-hover:border-[#48C293] transition-colors">
-                <ArrowUpRight className="w-4 h-4" />
-              </div>
+            <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-[#17332A]">
+              <span>50+ Pre-built connectors</span>
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#17332A] transition-colors" />
             </div>
           </div>
 
-          {/* Card 3: Real-time analytics with sparkline */}
-          <div className="w-full h-auto min-h-[220px] rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200/80 hover:border-[#48C293]/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden">
+          {/* Card 3: Real-time analytics & billing */}
+          <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
-                  03 • Cost Intelligence
+                  03 • Cost Control
                 </span>
-                <span className="text-xs font-mono font-bold text-emerald-600">-28% cost</span>
+                <span className="text-xs font-bold text-emerald-600">-28% avg spend</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3 group-hover:text-[#17332A] transition-colors">
-                {lang === 'en' ? 'Real-time analytics.' : 'Real-time kosteninzicht.'}
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3">
+                {lang === 'en' ? 'Real-time cost transparency.' : 'Volledig inzicht in verzendkosten.'}
               </h3>
 
-              <p className="text-sm text-[#52605B] leading-relaxed mb-5">
+              <p className="text-sm sm:text-base text-[#52605B] leading-relaxed mb-6">
                 {lang === 'en'
-                  ? 'Audit fuel surcharges, peak fees, and carrier performance with interactive telemetry and automated invoice checks.'
+                  ? 'Audit fuel surcharges, peak surcharges, and carrier performance per parcel with consolidated monthly statements.'
                   : 'Volledige transparantie over brandstoftoeslagen, piekkosten en vervoerdersprestaties per individueel pakket.'}
               </p>
 
-              {/* Interactive SVG Sparkline / Area Chart */}
-              <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs mb-6">
-                <div className="flex items-center justify-between text-xs mb-3">
-                  <span className="font-semibold text-slate-500">Avg Cost / Parcel (EUR)</span>
-                  <span className="text-xs font-extrabold text-[#48C293] bg-[#E9F8F2] px-2 py-0.5 rounded-full">
-                    ↓ €1.04 saved/p
-                  </span>
+              {/* Clean Human Statement Metrics */}
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
+                <div className="flex items-center justify-between pb-3 border-b border-slate-100 text-xs text-slate-500">
+                  <span>Monthly Fulfillment Audit</span>
+                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2 py-0.5 rounded">All invoices reconciled</span>
                 </div>
-
-                <div className="relative h-28 w-full flex items-end justify-between gap-2 pt-4">
-                  {/* SVG Line & Gradient */}
-                  <svg className="absolute inset-0 w-full h-full overflow-visible pointer-events-none">
-                    <defs>
-                      <linearGradient id="sparklineGrad" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#48C293" stopOpacity="0.35" />
-                        <stop offset="100%" stopColor="#48C293" stopOpacity="0.0" />
-                      </linearGradient>
-                    </defs>
-                    <path
-                      d="M 15 10 Q 70 30, 130 45 T 250 65 T 380 85 T 480 92 L 480 110 L 15 110 Z"
-                      fill="url(#sparklineGrad)"
-                    />
-                    <path
-                      d="M 15 10 Q 70 30, 130 45 T 250 65 T 380 85 T 480 92"
-                      fill="none"
-                      stroke="#48C293"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
-                    />
-                  </svg>
-
-                  {/* Interactive Points */}
-                  {analyticsPoints.map((pt, idx) => (
-                    <div
-                      key={idx}
-                      onMouseEnter={() => setActiveTooltip(idx)}
-                      className="relative z-10 flex flex-col items-center cursor-pointer group/bar flex-1"
-                    >
-                      {activeTooltip === idx && (
-                        <div className="absolute -top-8 px-2 py-0.5 rounded bg-[#17332A] text-white text-[10px] font-bold whitespace-nowrap shadow-md">
-                          €{pt.cost} ({pt.volume})
-                        </div>
-                      )}
-                      <div
-                        className={`w-2.5 h-2.5 rounded-full transition-all ${
-                          activeTooltip === idx
-                            ? 'bg-[#17332A] ring-4 ring-[#48C293]/30 scale-125'
-                            : 'bg-[#48C293] opacity-80'
-                        }`}
-                      />
-                      <span className="text-[10px] text-slate-400 mt-2 font-mono">{pt.month}</span>
-                    </div>
-                  ))}
+                <div className="grid grid-cols-2 gap-4 pt-3">
+                  <div>
+                    <span className="text-xs text-slate-400 block">Avg Cost / Parcel</span>
+                    <span className="text-xl font-bold text-slate-900">€2.41</span>
+                    <span className="text-[11px] text-emerald-600 block mt-0.5">↓ €0.84 saved vs list rate</span>
+                  </div>
+                  <div>
+                    <span className="text-xs text-slate-400 block">On-Time Performance</span>
+                    <span className="text-xl font-bold text-slate-900">99.4%</span>
+                    <span className="text-[11px] text-slate-500 block mt-0.5">Across all connected carriers</span>
+                  </div>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-              <span className="text-xs font-bold text-[#17332A]">
-                100% Invoice Transparency • No Hidden Fees
-              </span>
-              <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-[#48C293] group-hover:border-[#48C293] transition-colors">
-                <ArrowUpRight className="w-4 h-4" />
-              </div>
+            <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-[#17332A]">
+              <span>Consolidated monthly billing</span>
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#17332A] transition-colors" />
             </div>
           </div>
 
-          {/* Card 4: Global coverage */}
-          <div className="w-full h-auto min-h-[220px] rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200/80 hover:border-[#48C293]/60 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group overflow-hidden">
+          {/* Card 4: Global scale & redundancy */}
+          <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider shrink-0">
-                  04 • Global Scale & Redundancy
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
+                  04 • Global Scale
                 </span>
-                <span className="text-xs font-mono font-bold text-slate-400">99.9% Uptime</span>
+                <span className="text-xs font-bold text-slate-500">99.9% Uptime</span>
               </div>
 
-              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3 group-hover:text-[#17332A] transition-colors">
+              <h3 className="text-2xl sm:text-3xl font-bold text-[#161D1A] mb-3">
                 {lang === 'en' ? 'Global coverage you can depend on.' : 'Wereldwijde dekking waarop je bouwt.'}
               </h3>
 
               <p className="text-sm sm:text-base text-[#52605B] leading-relaxed mb-6">
                 {lang === 'en'
-                  ? 'Ship locally or cross-border across 200+ countries with 1,000+ shipping methods. Our multi-carrier mesh provides automated failover if any carrier experiences regional delays.'
-                  : 'Verzend lokaal of cross-border naar 200+ landen met meer dan 1.000 verzendopties en automatische failover bij storingen of piekcongestie.'}
+                  ? 'Ship locally or internationally across 200+ countries with automatic carrier failover and unified customs paperwork.'
+                  : 'Verzend lokaal of cross-border naar 200+ landen met meer dan 1.000 verzendopties en automatische douanedocumenten.'}
               </p>
 
-              {/* Live Corridors Telemetry */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-6">
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-slate-800">200+</span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                  </div>
-                  <span className="text-xs font-semibold text-[#17332A] block">Destination Countries</span>
-                  <span className="text-[10px] text-slate-400">Domestic & Cross-Border</span>
+              {/* Clean Key Stats */}
+              <div className="grid grid-cols-3 gap-3 mb-6">
+                <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center">
+                  <span className="text-xl font-bold text-slate-900 block">200+</span>
+                  <span className="text-[11px] text-slate-500 mt-0.5 block">Countries</span>
                 </div>
-
-                <div className="p-3.5 rounded-2xl bg-white border border-slate-200/90 shadow-xs">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-slate-800">1,000+</span>
-                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
-                  </div>
-                  <span className="text-xs font-semibold text-[#17332A] block">Shipping Methods</span>
-                  <span className="text-[10px] text-slate-400">Express, Postal & Cargo</span>
+                <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center">
+                  <span className="text-xl font-bold text-slate-900 block">50+</span>
+                  <span className="text-[11px] text-slate-500 mt-0.5 block">Carriers</span>
                 </div>
-
-                <div className="p-3.5 rounded-2xl bg-[#F3FBF7] border border-[#48C293]/30 shadow-xs">
-                  <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-bold text-[#17332A]">99.9%</span>
-                    <ShieldCheck className="w-3.5 h-3.5 text-[#48C293]" />
-                  </div>
-                  <span className="text-xs font-semibold text-[#17332A] block">Platform Uptime</span>
-                  <span className="text-[10px] text-slate-500">Multi-Cloud Cluster</span>
+                <div className="p-3.5 rounded-xl bg-white border border-slate-200 text-center">
+                  <span className="text-xl font-bold text-[#17332A] block">99.9%</span>
+                  <span className="text-[11px] text-slate-500 mt-0.5 block">SLA Uptime</span>
                 </div>
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-200/60 flex items-center justify-between">
-              <span className="text-xs font-bold text-[#17332A]">
-                300M+ Parcels Annually Routed Across Europe & Beyond
-              </span>
-              <div className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 group-hover:text-[#48C293] group-hover:border-[#48C293] transition-colors">
-                <ArrowUpRight className="w-4 h-4" />
-              </div>
+            <div className="pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-[#17332A]">
+              <span>Multi-carrier failover protection</span>
+              <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#17332A] transition-colors" />
             </div>
           </div>
         </div>
