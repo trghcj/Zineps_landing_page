@@ -196,16 +196,17 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Volledige transparantie over brandstoftoeslagen, piekkosten en vervoerdersprestaties per individueel pakket.'}
               </p>
 
-              {/* Two Prominent KPIs + Secondary Trend Sparkline using only existing data */}
+              {/* Two Prominent KPIs + Complete Full-Width Monthly Fulfillment Audit Graph */}
               <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
                 <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs text-slate-500">
-                  <span className="font-medium">Monthly Fulfillment Audit</span>
-                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
+                  <span className="font-semibold text-slate-700">Monthly Fulfillment Audit</span>
+                  <span className="text-emerald-700 font-bold bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200 text-[11px]">
                     All invoices reconciled
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 gap-4 pt-4 items-end">
+                {/* 2 Primary KPI Highlights */}
+                <div className="grid grid-cols-2 gap-4 pt-4 pb-3 items-start">
                   {/* KPI 1: Cost */}
                   <div>
                     <span className="text-xs text-slate-400 block font-medium">Avg Cost / Parcel</span>
@@ -217,22 +218,76 @@ const WhyZinepsGrid: React.FC = () => {
                     </span>
                   </div>
 
-                  {/* KPI 2: On-Time Performance + Secondary Sparkline */}
+                  {/* KPI 2: On-Time Performance */}
                   <div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-slate-400 block font-medium">On-Time Performance</span>
-                      {/* Secondary abstract analytics trend sparkline */}
-                      <svg className="w-16 h-6 text-[#48C293] shrink-0" viewBox="0 0 64 24" fill="none">
-                        <path d="M2 20 L18 15 L34 16 L48 8 L62 5" stroke="#48C293" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                        <circle cx="62" cy="5" r="2.5" fill="#17332A" />
-                      </svg>
-                    </div>
+                    <span className="text-xs text-slate-400 block font-medium">On-Time Performance</span>
                     <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block mt-1">
                       99.4%
                     </span>
                     <span className="text-[11px] text-slate-500 block mt-1">
                       Across all connected carriers
                     </span>
+                  </div>
+                </div>
+
+                {/* Full-Width Monthly Cost Reduction Audit Graph */}
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">
+                      6-Month Cost Trajectory
+                    </span>
+                    <span className="text-[11px] font-bold text-emerald-700">
+                      -25.8% Optimization
+                    </span>
+                  </div>
+
+                  {/* Complete, Full-Width Area & Line Graph */}
+                  <div className="w-full h-20 sm:h-24 relative mt-1">
+                    <svg className="w-full h-full overflow-visible" viewBox="0 0 340 70" preserveAspectRatio="none">
+                      <defs>
+                        <linearGradient id="costAuditGrad" x1="0" y1="0" x2="0" y2="1">
+                          <stop offset="0%" stopColor="#48C293" stopOpacity="0.28" />
+                          <stop offset="100%" stopColor="#48C293" stopOpacity="0.02" />
+                        </linearGradient>
+                      </defs>
+                      {/* Grid guide lines */}
+                      <line x1="10" y1="15" x2="330" y2="15" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
+                      <line x1="10" y1="40" x2="330" y2="40" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
+                      
+                      {/* Area Fill */}
+                      <path
+                        d="M 10 16 L 74 24 L 138 34 L 202 44 L 266 52 L 330 60 L 330 70 L 10 70 Z"
+                        fill="url(#costAuditGrad)"
+                      />
+                      
+                      {/* Trend Line */}
+                      <path
+                        d="M 10 16 L 74 24 L 138 34 L 202 44 L 266 52 L 330 60"
+                        fill="none"
+                        stroke="#48C293"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                      
+                      {/* Data points */}
+                      <circle cx="10" cy="16" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
+                      <circle cx="74" cy="24" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
+                      <circle cx="138" cy="34" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
+                      <circle cx="202" cy="44" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
+                      <circle cx="266" cy="52" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
+                      <circle cx="330" cy="60" r="4.5" fill="#17332A" stroke="#48C293" strokeWidth="2" />
+                    </svg>
+                  </div>
+
+                  {/* Month axis labels */}
+                  <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mt-2 px-1">
+                    <span>Jan (€3.25)</span>
+                    <span>Feb</span>
+                    <span>Mar</span>
+                    <span>Apr</span>
+                    <span>May</span>
+                    <span className="font-bold text-[#17332A]">Jun (€2.41)</span>
                   </div>
                 </div>
               </div>

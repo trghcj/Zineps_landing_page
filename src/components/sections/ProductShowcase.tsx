@@ -50,7 +50,7 @@ export const ProductShowcase: React.FC = () => {
     },
   ];
 
-  // The 5 exact products from the second picture
+  // The 5 exact products from the reference mockup
   const products = [
     {
       id: 0,
@@ -89,7 +89,7 @@ export const ProductShowcase: React.FC = () => {
     },
   ];
 
-  // The 5 exact carriers from the second picture
+  // The 5 exact carriers from the reference mockup
   const carriers = [
     {
       id: 0,
@@ -155,7 +155,7 @@ export const ProductShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* Rock-solid 12-column responsive layout preventing container crushing */}
+        {/* 12-Column Responsive Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Left Column: Feature List Stack (5 of 12 cols = ~42%) */}
@@ -210,11 +210,11 @@ export const ProductShowcase: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Exact Authentic Mockup from Reference (7 of 12 cols = ~58%) */}
-          <div className="lg:col-span-7 w-full rounded-3xl border border-slate-200 bg-white p-3.5 sm:p-6 shadow-xl overflow-hidden">
+          {/* Right Column: Authentic Mockup with Roomy Spacing and Side-by-Side Grid */}
+          <div className="lg:col-span-7 w-full rounded-3xl border border-slate-200 bg-white p-4 sm:p-6 md:p-7 shadow-xl overflow-hidden">
             
             {/* Window Chrome Header with 3 Dots */}
-            <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-100">
+            <div className="flex items-center justify-between pb-4 mb-5 border-b border-slate-100">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
                 <span className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
@@ -224,7 +224,7 @@ export const ProductShowcase: React.FC = () => {
                 </span>
               </div>
 
-              {/* Status Indicator responding to active feature */}
+              {/* Status Indicator */}
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#48C293] animate-pulse" />
                 <span className="text-[11px] font-semibold text-slate-600 hidden sm:inline">
@@ -236,17 +236,17 @@ export const ProductShowcase: React.FC = () => {
               </div>
             </div>
 
-            {/* Main Mockup Body: Two Columns as in the Reference Image */}
-            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 items-start">
+            {/* Main Mockup Body: Side-by-Side layout from sm screens up */}
+            <div className="grid grid-cols-1 sm:grid-cols-12 gap-5 sm:gap-6 items-start">
               
-              {/* Products List (Left Side — 7 Cols) */}
-              <div className="md:col-span-7 space-y-2">
+              {/* Products List (Left Side — 7 Cols on sm+) */}
+              <div className="sm:col-span-7 space-y-2.5">
                 <div className="flex items-center justify-between px-1 pb-1">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                     ORDERS IN QUEUE (5)
                   </span>
                   {activeTab === 0 && (
-                    <span className="text-[10px] font-bold text-[#17332A] bg-[#E6FAF5] px-2 py-0.5 rounded-full">
+                    <span className="text-[10px] font-bold text-[#17332A] bg-[#E6FAF5] px-2.5 py-0.5 rounded-full border border-[#48C293]/30">
                       All Selected
                     </span>
                   )}
@@ -258,10 +258,10 @@ export const ProductShowcase: React.FC = () => {
                     <div
                       key={prod.id}
                       onClick={() => setSelectedProduct(prod.id)}
-                      className={`flex items-center gap-3 p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer ${
+                      className={`flex items-center gap-3.5 p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer min-h-[54px] ${
                         isSelected
-                          ? 'bg-[#E6FAF5] border border-[#70CAB9]/40 shadow-xs'
-                          : 'bg-white hover:bg-slate-50 border border-transparent'
+                          ? 'bg-[#E6FAF5] border border-[#70CAB9]/50 shadow-xs'
+                          : 'bg-white hover:bg-slate-50/80 border border-slate-100'
                       }`}
                     >
                       {/* Product Thumbnail */}
@@ -271,7 +271,6 @@ export const ProductShowcase: React.FC = () => {
                           alt={prod.title}
                           className="w-full h-full object-cover"
                           onError={(e) => {
-                            // Fallback if image path has issue
                             (e.target as HTMLElement).style.display = 'none';
                           }}
                         />
@@ -299,23 +298,23 @@ export const ProductShowcase: React.FC = () => {
                   );
                 })}
 
-                {/* Sub-feature state banner (Interactive Feedback for Tracking / Returns) */}
+                {/* Sub-feature state banner */}
                 {activeTab === 2 && (
-                  <div className="mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
+                  <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
                     <Sparkles className="w-4 h-4 text-[#48C293] shrink-0" />
                     <span>Branded tracking notifications automatically dispatched upon label generation.</span>
                   </div>
                 )}
                 {activeTab === 3 && (
-                  <div className="mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
+                  <div className="mt-3 p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
                     <QrCode className="w-4 h-4 text-[#17332A] shrink-0" />
                     <span>Instant paperless return pass & drop-off QR generated automatically.</span>
                   </div>
                 )}
               </div>
 
-              {/* Carriers List & Action Button (Right Side — 5 Cols) */}
-              <div className="md:col-span-5 bg-[#F9FBFA] p-3 sm:p-3.5 rounded-2xl border border-slate-200/80 flex flex-col space-y-2">
+              {/* Carriers List & Action Button (Right Side — 5 Cols on sm+) */}
+              <div className="sm:col-span-5 bg-[#F9FBFA] p-3.5 sm:p-4 rounded-2xl border border-slate-200/80 flex flex-col space-y-2.5">
                 <div className="flex items-center justify-between px-1 pb-0.5">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                     CARRIER RATES
@@ -325,19 +324,18 @@ export const ProductShowcase: React.FC = () => {
 
                 {carriers.map((car) => {
                   const isSelected = selectedCarrier === car.id;
-                  const isRecommended = car.badge && activeTab === 1;
                   return (
                     <button
                       key={car.id}
                       onClick={() => setSelectedCarrier(car.id)}
-                      className={`w-full p-2.5 rounded-xl border text-left transition-all flex items-center justify-between ${
+                      className={`w-full p-2.5 rounded-xl border text-left transition-all flex items-center justify-between gap-2 min-h-[44px] ${
                         isSelected
-                          ? 'bg-white border-[#70CAB9] shadow-sm ring-1 ring-[#70CAB9]/20'
+                          ? 'bg-white border-[#70CAB9] shadow-xs ring-1 ring-[#70CAB9]/25'
                           : 'bg-white/80 border-slate-200/80 hover:bg-white hover:border-slate-300'
                       }`}
                     >
-                      <div className="flex items-center gap-2.5 min-w-0">
-                        <div className="w-12 h-5 flex items-center justify-center shrink-0">
+                      <div className="flex items-center gap-2 min-w-0">
+                        <div className="w-10 h-5 flex items-center justify-center shrink-0">
                           <img
                             src={car.logo}
                             alt={car.name}
@@ -365,7 +363,7 @@ export const ProductShowcase: React.FC = () => {
                 <div className="pt-2">
                   <button
                     onClick={handleCreateLabel}
-                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer ${
+                    className={`w-full py-2.5 sm:py-3 px-4 rounded-xl font-bold text-xs sm:text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer ${
                       isLabelCreated
                         ? 'bg-emerald-600'
                         : 'bg-[#70CAB9] hover:bg-[#5dbba9] active:scale-[0.99]'
