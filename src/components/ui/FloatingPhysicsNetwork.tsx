@@ -94,6 +94,14 @@ export const FloatingPhysicsNetwork: React.FC<FloatingPhysicsNetworkProps> = ({
     const effectiveW = Math.max(width - padding * 2, 280);
     const effectiveH = Math.max(height - padding * 2, 200);
 
+    // Prune stale nodes from previous category selection
+    const currentIdSet = new Set(items.map((i) => i.id));
+    for (const key of Array.from(statesRef.current.keys())) {
+      if (!currentIdSet.has(key)) {
+        statesRef.current.delete(key);
+      }
+    }
+
     items.forEach((item, index) => {
       const coord = RELATIVE_COORDINATES[index % RELATIVE_COORDINATES.length]!;
       const homeX = padding + coord.xRatio * effectiveW;
@@ -262,6 +270,35 @@ export const FloatingPhysicsNetwork: React.FC<FloatingPhysicsNetworkProps> = ({
     mouseRef.current.active = false;
   };
 
+const PhysicsBadgeItem: React.FC<{ item: PhysicsItemData; sizeClass?: string; imgClass?: string }> = ({
+  item,
+  sizeClass = 'w-16 h-16 sm:w-18 sm:h-18 p-2',
+  imgClass = 'w-10 h-10',
+}) => {
+  const [imgError, setImgError] = useState(false);
+
+  return (
+    <div
+      title={item.name}
+      className={`${sizeClass} rounded-2xl bg-white/95 shadow-lg border border-gray-100/80 flex items-center justify-center hover:shadow-[0_12px_28px_rgba(112,202,185,0.35)] hover:scale-110 transition-all duration-150`}
+    >
+      {!imgError ? (
+        <img
+          src={item.src}
+          alt={item.name}
+          onError={() => setImgError(true)}
+          className={`${imgClass} object-contain pointer-events-none select-none`}
+          draggable={false}
+        />
+      ) : (
+        <div className={`${imgClass} rounded-xl bg-[#E9F8F2] text-[#17332A] flex items-center justify-center font-bold text-xs`}>
+          {item.name.slice(0, 3).toUpperCase()}
+        </div>
+      )}
+    </div>
+  );
+};
+
   // Mobile / Reduced Motion Accessible Grid Render
   if (isMobile || isReducedMotion) {
     return (
@@ -271,17 +308,12 @@ export const FloatingPhysicsNetwork: React.FC<FloatingPhysicsNetworkProps> = ({
       >
         <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4">
           {items.map((item) => (
-            <div
+            <PhysicsBadgeItem
               key={item.id}
-              className="p-2 sm:p-2.5 rounded-2xl bg-white shadow-sm border border-gray-100/80 flex items-center justify-center hover:shadow-md transition-shadow"
-            >
-              <img
-                src={item.src}
-                alt={item.name}
-                className="w-10 h-10 object-contain pointer-events-none"
-                draggable={false}
-              />
-            </div>
+              item={item}
+              sizeClass="p-2 sm:p-2.5"
+              imgClass="w-8 h-8 sm:w-10 sm:h-10"
+            />
           ))}
         </div>
       </div>
@@ -317,15 +349,7 @@ export const FloatingPhysicsNetwork: React.FC<FloatingPhysicsNetworkProps> = ({
             transform: 'translate(-50%, -50%)',
           }}
         >
-          {/* Outer Rounded Badge with authentic Zineps shadow */}
-          <div className="w-16 h-16 sm:w-18 sm:h-18 p-2 rounded-2xl bg-white/95 shadow-lg border border-gray-100/80 flex items-center justify-center hover:shadow-[0_12px_28px_rgba(112,202,185,0.35)] hover:scale-110 transition-all duration-150">
-            <img
-              src={item.src}
-              alt={item.name}
-              className="w-10 h-10 object-contain pointer-events-none"
-              draggable={false}
-            />
-          </div>
+          <PhysicsBadgeItem item={item} />
         </div>
       ))}
     </div>

@@ -75,24 +75,24 @@ const WhyZinepsGrid: React.FC = () => {
               </p>
 
               {/* Interactive Mini UI: Unified Pipeline Rules */}
-              <div className="p-4 rounded-2xl bg-white border border-slate-200/90 shadow-xs mb-6 space-y-2.5">
-                <div className="flex items-center justify-between text-xs font-semibold pb-2 border-b border-slate-100 text-slate-500">
+              <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200/90 shadow-xs mb-6 space-y-3">
+                <div className="flex items-center justify-between text-xs font-semibold pb-2.5 border-b border-slate-100 text-slate-500">
                   <span>Automated Routing Rule #104</span>
                   <span className="text-[#48C293] font-bold">Active in Production</span>
                 </div>
 
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                  <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                    <span className="text-[10px] text-slate-400 block">Condition</span>
-                    <span className="font-bold text-slate-800">Destination: EU Zone 1</span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                  <div className="px-3.5 py-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-center">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1 block">Condition</span>
+                    <span className="font-bold text-slate-800 text-xs leading-tight">Destination: EU Zone 1</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-50 border border-slate-100">
-                    <span className="text-[10px] text-slate-400 block">AI Evaluation</span>
-                    <span className="font-bold text-slate-800">Lowest SLA latency</span>
+                  <div className="px-3.5 py-3 rounded-xl bg-slate-50 border border-slate-200/80 flex flex-col justify-center">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-slate-400 mb-1 block">AI Evaluation</span>
+                    <span className="font-bold text-slate-800 text-xs leading-tight">Lowest SLA latency</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-[#F3FBF7] border border-[#48C293]/30">
-                    <span className="text-[10px] text-[#17332A] block">Matched Carrier</span>
-                    <span className="font-bold text-[#17332A]">DHL Express (€2.84)</span>
+                  <div className="px-3.5 py-3 rounded-xl bg-[#F3FBF7] border border-[#48C293]/40 flex flex-col justify-center">
+                    <span className="text-[10px] uppercase font-bold tracking-wider text-[#17332A] mb-1 block">Matched Carrier</span>
+                    <span className="font-bold text-[#17332A] text-xs leading-tight">DHL Express (€2.84)</span>
                   </div>
                 </div>
               </div>
@@ -129,21 +129,21 @@ const WhyZinepsGrid: React.FC = () => {
               </p>
 
               {/* Visual Ecosystem Chips: Shopify, WooCommerce, Amazon, Bol.com, Exact */}
-              <div className="grid grid-cols-2 gap-2.5 mb-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
                 {[
-                  { name: 'Shopify', desc: 'Auto order sync', color: 'text-emerald-700 bg-emerald-50 border-emerald-200' },
-                  { name: 'WooCommerce', desc: 'Direct plugin', color: 'text-purple-700 bg-purple-50 border-purple-200' },
-                  { name: 'Bol.com', desc: 'LVB & Partner API', color: 'text-blue-700 bg-blue-50 border-blue-200' },
-                  { name: 'Amazon', desc: 'FBA & FBM sync', color: 'text-amber-700 bg-amber-50 border-amber-200' },
-                  { name: 'Exact Online', desc: 'ERP accounting', color: 'text-rose-700 bg-rose-50 border-rose-200' },
+                  { name: 'Shopify', desc: 'Auto order sync', color: 'text-emerald-800 bg-emerald-50/80 border-emerald-200' },
+                  { name: 'WooCommerce', desc: 'Direct plugin', color: 'text-purple-800 bg-purple-50/80 border-purple-200' },
+                  { name: 'Bol.com', desc: 'LVB & Partner API', color: 'text-blue-800 bg-blue-50/80 border-blue-200' },
+                  { name: 'Amazon', desc: 'FBA & FBM sync', color: 'text-amber-800 bg-amber-50/80 border-amber-200' },
+                  { name: 'Exact Online', desc: 'ERP accounting', color: 'text-rose-800 bg-rose-50/80 border-rose-200' },
                   { name: 'REST & Webhooks', desc: 'Developer first', color: 'text-slate-800 bg-slate-100 border-slate-200' },
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className={`p-2.5 rounded-xl border flex flex-col justify-center ${item.color}`}
+                    className={`px-4 py-3 rounded-xl border flex flex-col justify-center gap-1 shadow-xs transition-transform hover:-translate-y-0.5 ${item.color}`}
                   >
-                    <span className="font-bold text-xs">{item.name}</span>
-                    <span className="text-[10px] opacity-80">{item.desc}</span>
+                    <span className="font-bold text-xs sm:text-sm tracking-tight leading-none">{item.name}</span>
+                    <span className="text-[11px] opacity-80 leading-snug">{item.desc}</span>
                   </div>
                 ))}
               </div>

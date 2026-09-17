@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect width="120" height="120" rx="26" fill="#17332A"/>
+  <!-- Modern API / Terminal Code Icon -->
+  <g fill="none" stroke="#48C293" stroke-width="8" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Left Bracket < -->
+    <path d="M42 42 L24 60 L42 78"/>
+    <!-- Right Bracket > -->
+    <path d="M78 42 L96 60 L78 78"/>
+    <!-- Slash / -->
+    <path d="M66 36 L54 84" stroke="#70CAB9"/>
+  </g>
+</svg>

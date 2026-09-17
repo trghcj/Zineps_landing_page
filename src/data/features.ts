@@ -357,8 +357,8 @@ export const integrationCategories = [
       { name: 'SnelStart', logo: '/snelstart-logo.svg' },
       { name: 'CCV Shop', logo: '/ccv-shop-logo.svg' },
       { name: 'DB Schenker', logo: '/db-schenker-logo.svg' },
-      { name: 'Picqer (API)', logo: '/mockups/integrations.svg' },
-      { name: 'Custom ERP API', logo: '/mockups/integrations.svg' },
+      { name: 'Picqer (API)', logo: '/picqer-logo.svg' },
+      { name: 'Custom ERP API', logo: '/custom-erp-logo.svg' },
     ],
   },
   {

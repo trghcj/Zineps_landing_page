@@ -36,20 +36,29 @@ const IntegrationsGrid: React.FC = () => {
         </div>
 
         {/* 3 Categories Selector */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-8">
-          {integrationCategories.map((cat, idx) => (
-            <button
-              key={idx}
-              onClick={() => setActiveTab(idx)}
-              className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all ${
-                activeTab === idx
-                  ? 'bg-[#17332A] text-white shadow-md'
-                  : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
-              }`}
-            >
-              {lang === 'en' ? cat.category : cat.categoryNL}
-            </button>
-          ))}
+        <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 mb-8">
+          {integrationCategories.map((cat, idx) => {
+            const isActive = activeTab === idx;
+            return (
+              <button
+                key={idx}
+                type="button"
+                onClick={() => setActiveTab(idx)}
+                style={
+                  isActive
+                    ? { backgroundColor: '#17332A', color: '#ffffff', borderColor: '#17332A' }
+                    : { backgroundColor: '#ffffff', color: '#334155', borderColor: '#e2e8f0' }
+                }
+                className={`px-6 py-2.5 rounded-full text-xs sm:text-sm font-bold uppercase tracking-wider transition-all border shadow-xs ${
+                  isActive
+                    ? 'shadow-md scale-[1.02]'
+                    : 'hover:bg-slate-50 hover:border-slate-300'
+                }`}
+              >
+                {lang === 'en' ? cat.category : cat.categoryNL}
+              </button>
+            );
+          })}
         </div>
 
         {/* Interactive Physics Boxes Representation for Current Category */}

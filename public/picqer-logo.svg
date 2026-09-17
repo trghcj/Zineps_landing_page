@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <rect width="120" height="120" rx="26" fill="#1BBC9B"/>
+  <!-- Isometric 3D Package / Box Symbol for Picqer WMS -->
+  <g transform="translate(60, 60)">
+    <!-- Top Face -->
+    <polygon points="0,-32 28,-16 0,0 -28,-16" fill="#A2F5DE" opacity="0.95"/>
+    <!-- Left Face -->
+    <polygon points="-28,-16 0,0 0,32 -28,16" fill="#148F77"/>
+    <!-- Right Face -->
+    <polygon points="0,0 28,-16 28,16 0,32" fill="#16A085"/>
+    <!-- Top Tape -->
+    <polygon points="-8,-20 0,-16 8,-20 0,-24" fill="#FFFFFF" opacity="0.8"/>
+  </g>
+</svg>
