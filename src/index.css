@@ -1376,17 +1376,25 @@ button[type="submit"].zineps-subscribe-btn:active {
   transform: translateX(-50%) translateY(0);
 }
 
-/* ── Smooth Slow Scroll Reveal for Sections ── */
-.zineps-reveal {
+/* ── Smooth Slow Scroll Reveal for Sections (Millisecond Delay & Gentle Float) ── */
+.zineps-section-reveal {
   opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.95s cubic-bezier(0.16, 1, 0.3, 1), transform 0.95s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.2, 0.8, 0.2, 1), transform 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
   will-change: opacity, transform;
 }
 
-.zineps-reveal.is-visible {
+.zineps-section-reveal.is-visible {
   opacity: 1 !important;
   transform: translateY(0) !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zineps-section-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 

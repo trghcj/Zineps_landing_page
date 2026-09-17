@@ -1,4 +1,4 @@
-import React, { useState, createContext, useContext } from 'react';
+import React, { useState, createContext, useContext, useEffect, useRef } from 'react';
 import AnnouncementBanner from './components/layout/AnnouncementBanner';
 import Header from './components/layout/Header';
 import Footer from './components/layout/Footer';
@@ -35,6 +35,59 @@ export const LangContext = createContext<LangContextType>({
 
 export const useLang = () => useContext(LangContext);
 
+/**
+ * RevealSection: Gracefully animates sections into view with a millisecond delay
+ * when the user scrolls them into the viewport.
+ */
+interface RevealSectionProps {
+  children: React.ReactNode;
+  delayMs?: number;
+  className?: string;
+}
+
+const RevealSection: React.FC<RevealSectionProps> = ({ children, delayMs = 120, className = '' }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const timer = setTimeout(() => {
+              setIsVisible(true);
+            }, delayMs);
+            observer.unobserve(entry.target);
+            return () => clearTimeout(timer);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+
+    observer.observe(el);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [delayMs]);
+
+  return (
+    <div
+      ref={ref}
+      className={`zineps-section-reveal ${isVisible ? 'is-visible' : ''} ${className}`}
+    >
+      {children}
+    </div>
+  );
+};
+
 export default function App() {
   const [lang, setLang] = useState<Lang>('en');
 
@@ -43,64 +96,94 @@ export default function App() {
   return (
     <LangContext.Provider value={{ lang, setLang, t }}>
       <div className="w-full min-h-screen font-sans bg-white text-[#161D1A] selection:bg-[#70CAB9]/30 selection:text-[#0F231D]">
-        {/* 1. Announcement Banner */}
+        {/* 1. Announcement Banner (Immediate) */}
         <AnnouncementBanner />
 
-        {/* 2. Glassmorphic Navigation Header */}
+        {/* 2. Glassmorphic Navigation Header (Immediate) */}
         <Header />
 
-        {/* 3. Hero Section with 3D Orders Dashboard */}
+        {/* 3. Hero Section with 3D Orders Dashboard (Immediate above-the-fold) */}
         <HeroSection />
 
         {/* 4. Interactive Physics Carrier Badges */}
-        <section className="w-full -mt-6 mb-12 overflow-hidden">
+        <RevealSection delayMs={100} className="w-full -mt-6 mb-12 overflow-hidden">
           <FloatingIcons />
-        </section>
+        </RevealSection>
 
         {/* 5. Trusted by Enterprise Brands Marquee */}
-        <TrustedByMarquee />
+        <RevealSection delayMs={120}>
+          <TrustedByMarquee />
+        </RevealSection>
 
         {/* 6. Live Partner Rates Calculator */}
-        <PartnerRatesSection />
+        <RevealSection delayMs={140}>
+          <PartnerRatesSection />
+        </RevealSection>
 
         {/* 7. Dual-Sided Platform Architecture (Merchants vs Logistics Partners) */}
-        <TwoSidedNetwork />
+        <RevealSection delayMs={140}>
+          <TwoSidedNetwork />
+        </RevealSection>
 
         {/* 8. End-to-End Fulfillment Pipeline */}
-        <ProductShowcase />
+        <RevealSection delayMs={150}>
+          <ProductShowcase />
+        </RevealSection>
 
         {/* 9. AI Copilot Decisioning Engine */}
-        <ShippingAIBanner />
+        <RevealSection delayMs={150}>
+          <ShippingAIBanner />
+        </RevealSection>
 
         {/* 10. Why Zineps Fintech Modular Bento Grid */}
-        <WhyZinepsGrid />
+        <RevealSection delayMs={150}>
+          <WhyZinepsGrid />
+        </RevealSection>
 
         {/* 11. Cross-Border Global Network & 3D Interactive WebGL Globe */}
-        <GlobalNetworkSection />
+        <RevealSection delayMs={160}>
+          <GlobalNetworkSection />
+        </RevealSection>
 
         {/* 12. Enterprise Uptime & Reliability */}
-        <ReliabilitySection />
+        <RevealSection delayMs={150}>
+          <ReliabilitySection />
+        </RevealSection>
 
         {/* 13. Universal Ecosystem Integrations */}
-        <IntegrationsGrid />
+        <RevealSection delayMs={150}>
+          <IntegrationsGrid />
+        </RevealSection>
 
         {/* 14. Dedicated Logistics Partner OS */}
-        <LogisticsPartnerSection />
+        <RevealSection delayMs={150}>
+          <LogisticsPartnerSection />
+        </RevealSection>
 
         {/* 15. Value Comparison: Traditional vs Zineps */}
-        <ComparisonSection />
+        <RevealSection delayMs={140}>
+          <ComparisonSection />
+        </RevealSection>
 
         {/* 16. Newsroom & Press Highlights */}
-        <NewsSection />
+        <RevealSection delayMs={140}>
+          <NewsSection />
+        </RevealSection>
 
         {/* 17. Frequently Asked Questions */}
-        <FAQSection />
+        <RevealSection delayMs={140}>
+          <FAQSection />
+        </RevealSection>
 
         {/* 18. High-Impact Dark Forest Call-to-Action with Live Counters */}
-        <GetStartedCTA />
+        <RevealSection delayMs={150}>
+          <GetStartedCTA />
+        </RevealSection>
 
         {/* 19. Comprehensive Brand Footer */}
-        <Footer />
+        <RevealSection delayMs={120}>
+          <Footer />
+        </RevealSection>
 
         {/* 20. Floating Mint Support Chat Launcher */}
         <aside
