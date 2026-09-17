@@ -125,9 +125,7 @@ const PartnerRatesSection: React.FC = () => {
               </div>
 
               <div className="flex flex-wrap items-center gap-3">
-                <a
-                  href="https://app.zineps.com/Account/Register"
-                  className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full font-bold text-sm bg-[#48C293] hover:bg-[#3bb182] text-white shadow-md hover:shadow-lg transition-all active:scale-95"
+                <a href="https://app.zineps.com/Account/Register" className="zineps-cta-btn h-12 px-7 rounded-xl font-bold text-sm"
                 >
                   <span>{lang === 'en' ? 'Start shipping' : 'Start gratis'}</span>
                   <ArrowRight className="w-4 h-4" />

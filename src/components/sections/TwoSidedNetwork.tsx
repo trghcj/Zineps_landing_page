@@ -72,9 +72,7 @@ const TwoSidedNetwork: React.FC = () => {
             </div>
 
             <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
-              <a
-                href="https://app.zineps.com/Account/Register"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-[#17332A] text-white hover:bg-[#21473B] transition-all shadow-sm"
+              <a href="https://app.zineps.com/Account/Register" className="zineps-cta-btn px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm"
               >
                 <span>{lang === 'en' ? 'Start shipping free' : 'Start gratis met verzenden'}</span>
                 <ArrowRight className="w-4 h-4" />
@@ -123,9 +121,7 @@ const TwoSidedNetwork: React.FC = () => {
             </div>
 
             <div className="pt-6 border-t border-slate-100 flex items-center justify-between">
-              <a
-                href="#partners"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full font-bold text-xs sm:text-sm bg-slate-100 hover:bg-slate-200 text-[#161D1A] transition-all"
+              <a href="#partners" className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl font-bold text-xs sm:text-sm border border-slate-200 bg-white hover:bg-[#F3FBF7] hover:border-[#70CAB9] text-[#10241E] transition-all shadow-xs"
               >
                 <span>{lang === 'en' ? 'Become a partner' : 'Word logistiek partner'}</span>
                 <ArrowRight className="w-4 h-4" />

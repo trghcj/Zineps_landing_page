@@ -109,9 +109,7 @@ const Header: React.FC = () => {
           </div>
 
           {/* Sign up for free button as rounded-full pill */}
-          <a
-            href="https://app.zineps.com/Account/Register"
-            className="inline-flex items-center justify-center px-5 py-2 rounded-full text-xs sm:text-sm font-semibold text-white bg-[#17332A] hover:bg-[#21473B] shadow-sm hover:shadow-md transition-all active:scale-95"
+          <a href="https://app.zineps.com/Account/Register" className="zineps-cta-btn px-5 py-2 rounded-xl text-xs sm:text-sm font-bold shadow-md"
           >
             {lang === 'en' ? 'Sign up for free' : 'Aanmelden'}
           </a>

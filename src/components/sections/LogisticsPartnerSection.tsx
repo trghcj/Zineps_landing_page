@@ -76,9 +76,7 @@ const LogisticsPartnerSection: React.FC = () => {
             </ul>
 
             <div>
-              <a
-                href="https://app.zineps.com/Account/Register"
-                className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full font-bold text-sm text-white bg-[#17332A] hover:bg-[#122820] shadow-md hover:shadow-lg transition-all"
+              <a href="https://app.zineps.com/Account/Register" className="zineps-cta-btn h-12 px-8 rounded-xl font-bold text-sm"
               >
                 <span>{lang === 'en' ? 'Become a logistics partner' : 'Word logistiek partner'}</span>
                 <ArrowRight className="w-4 h-4" />

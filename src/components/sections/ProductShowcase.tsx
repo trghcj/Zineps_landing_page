@@ -148,9 +148,7 @@ const ProductShowcase: React.FC = () => {
               </div>
             </div>
 
-            <a
-              href="https://app.zineps.com/Account/Register"
-              className="inline-flex items-center justify-center gap-2 h-11 px-6 rounded-full font-bold text-sm bg-[#17332A] text-white shadow hover:bg-[#21473B] transition hover:scale-105"
+            <a href="https://app.zineps.com/Account/Register" className="zineps-cta-btn h-12 px-7 rounded-xl font-bold text-sm"
             >
               <span>{lang === 'en' ? 'Start automated shipping' : 'Start met automatiseren'}</span>
               <ArrowRight className="w-4 h-4" />
