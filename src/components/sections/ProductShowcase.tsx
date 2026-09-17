@@ -6,12 +6,18 @@ import {
   Compass, 
   ArrowRight,
   Sliders,
+  Check,
+  CheckCircle2,
+  Sparkles,
   QrCode
 } from 'lucide-react';
 
-const ProductShowcase: React.FC = () => {
+export const ProductShowcase: React.FC = () => {
   const { lang } = useLang();
   const [activeTab, setActiveTab] = useState(0);
+  const [selectedProduct, setSelectedProduct] = useState(2); // Default to 'Plastic plant with different colors'
+  const [selectedCarrier, setSelectedCarrier] = useState(0); // Default to 'DHL For You'
+  const [isLabelCreated, setIsLabelCreated] = useState(false);
 
   const capabilities = [
     {
@@ -44,12 +50,96 @@ const ProductShowcase: React.FC = () => {
     },
   ];
 
+  // The 5 exact products from the second picture
+  const products = [
+    {
+      id: 0,
+      title: 'Small and light shampoo for kids',
+      image: '/products/shampoo.jpg',
+      weight: '0.45 kg',
+      sku: 'SHP-001',
+    },
+    {
+      id: 1,
+      title: 'Smart watch with ultra light',
+      image: '/products/smartwatch.jpg',
+      weight: '0.28 kg',
+      sku: 'WTC-402',
+    },
+    {
+      id: 2,
+      title: 'Plastic plant with different colors',
+      image: '/products/plant.jpg',
+      weight: '1.15 kg',
+      sku: 'PLN-884',
+    },
+    {
+      id: 3,
+      title: 'Soft and smart pillow for your room',
+      image: '/products/pillow.jpg',
+      weight: '0.80 kg',
+      sku: 'PLW-221',
+    },
+    {
+      id: 4,
+      title: 'Brand flag, fully custom colors',
+      image: '/products/flag.png',
+      weight: '0.35 kg',
+      sku: 'FLG-109',
+    },
+  ];
+
+  // The 5 exact carriers from the second picture
+  const carriers = [
+    {
+      id: 0,
+      name: 'DHL For You',
+      logo: '/hero-dhl.svg',
+      rate: '€2.84',
+      badge: 'Best Rate',
+      delivery: 'Tomorrow by 14:00',
+    },
+    {
+      id: 1,
+      name: 'Bpost',
+      logo: '/hero-bpost.svg',
+      rate: '€3.15',
+      delivery: '1-2 business days',
+    },
+    {
+      id: 2,
+      name: 'PostNL',
+      logo: '/hero-postnl.svg',
+      rate: '€3.40',
+      delivery: 'Tomorrow morning',
+    },
+    {
+      id: 3,
+      name: 'GLS',
+      logo: '/hero-gls.svg',
+      rate: '€3.20',
+      delivery: '24-48 hours',
+    },
+    {
+      id: 4,
+      name: 'FedEx',
+      logo: '/hero-fedex.svg',
+      rate: '€4.10',
+      delivery: 'Express Priority',
+    },
+  ];
+
+  const handleCreateLabel = () => {
+    setIsLabelCreated(true);
+    setTimeout(() => setIsLabelCreated(false), 2400);
+  };
+
   return (
     <section id="workflow" className="w-full py-14 md:py-18 relative bg-zinc-50/60 overflow-hidden border-t border-slate-100 scroll-mt-24">
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header: Tightly Connected to Showcase (Whitespace Reduced ~40px) */}
-        <div className="text-center max-w-3xl mx-auto mb-6 sm:mb-8">
+        {/* Section Header */}
+        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
           <span className="inline-flex items-center px-4 py-1.5 rounded-full bg-[#E6FAF5] text-[#17332A] text-xs font-bold uppercase tracking-wider mb-3 border border-[#48C293]/30">
             {lang === 'en' ? 'HOW IT WORKS' : 'HOE HET WERKT'}
           </span>
@@ -65,11 +155,11 @@ const ProductShowcase: React.FC = () => {
           </p>
         </div>
 
-        {/* 38% / 62% Column Proportions: Mockup as Dominant Centerpiece */}
-        <div className="flex flex-col lg:flex-row gap-8 lg:gap-10 items-start">
+        {/* Rock-solid 12-column responsive layout preventing container crushing */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Left Column: Feature List Stack (38% width, compact padding, perfectly aligned) */}
-          <div className="w-full lg:w-[38%] shrink-0 flex flex-col space-y-2.5">
+          {/* Left Column: Feature List Stack (5 of 12 cols = ~42%) */}
+          <div className="lg:col-span-5 flex flex-col space-y-2.5">
             {capabilities.map((cap, idx) => {
               const Icon = cap.icon;
               const isSelected = activeTab === idx;
@@ -108,7 +198,7 @@ const ProductShowcase: React.FC = () => {
               );
             })}
 
-            {/* CTA Button Naturally Aligned with Feature Stack */}
+            {/* CTA Button Aligned with Feature Stack */}
             <div className="pt-2">
               <a
                 href="https://app.zineps.com/Account/Register"
@@ -120,256 +210,178 @@ const ProductShowcase: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column: Prominent Product Mockup Showcase (62% width, +15% visual prominence) */}
-          <div className="w-full lg:w-[62%] min-w-0 rounded-3xl border border-slate-200 bg-white p-3.5 sm:p-6 shadow-lg overflow-hidden">
-            {/* macOS Chrome Header */}
+          {/* Right Column: Exact Authentic Mockup from Reference (7 of 12 cols = ~58%) */}
+          <div className="lg:col-span-7 w-full rounded-3xl border border-slate-200 bg-white p-3.5 sm:p-6 shadow-xl overflow-hidden">
+            
+            {/* Window Chrome Header with 3 Dots */}
             <div className="flex items-center justify-between pb-3.5 mb-3.5 border-b border-slate-100">
               <div className="flex items-center gap-2">
-                <span className="w-3 h-3 rounded-full bg-rose-400" />
-                <span className="w-3 h-3 rounded-full bg-amber-400" />
-                <span className="w-3 h-3 rounded-full bg-emerald-400" />
-                <span className="ml-2 text-[11px] font-mono text-slate-500 font-medium">
-                  app.zineps.com / {
-                    activeTab === 0 ? 'orders / bulk-print' :
-                    activeTab === 1 ? 'routing-rules / lane-optimizer' :
-                    activeTab === 2 ? 'branded-tracking / customer-view' :
-                    'returns-portal / qr-dropoff'
-                  }
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#E5E7EB]" />
+                <span className="ml-2 text-[11px] font-mono text-slate-400 font-medium">
+                  app.zineps.com / dispatch / label-create
                 </span>
               </div>
 
+              {/* Status Indicator responding to active feature */}
               <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[11px] font-semibold text-slate-600">Production Live</span>
+                <span className="w-2 h-2 rounded-full bg-[#48C293] animate-pulse" />
+                <span className="text-[11px] font-semibold text-slate-600 hidden sm:inline">
+                  {activeTab === 0 ? 'Batch Fulfillment Active' :
+                   activeTab === 1 ? 'Smart Routing Active' :
+                   activeTab === 2 ? 'Live Tracking Synced' :
+                   'Returns Portal Ready'}
+                </span>
               </div>
             </div>
 
-            {/* Coordinated Interactive Product Mockup States (150-250ms smooth transition) */}
-            <div className="relative min-h-[400px] sm:min-h-[440px] rounded-2xl bg-[#FAFCFB] border border-slate-200/80 p-4 sm:p-6 flex flex-col justify-between overflow-hidden">
+            {/* Main Mockup Body: Two Columns as in the Reference Image */}
+            <div className="grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-5 items-start">
               
-              {/* STATE 0: Bulk Label Generation */}
-              {activeTab === 0 && (
-                <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
-                  <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
-                      <div>
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                          BATCH FULFILLMENT QUEUE
-                        </span>
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
-                          48 Orders Selected for Label Print
-                        </h4>
-                      </div>
-                      <span className="px-3.5 py-1.5 rounded-lg bg-[#17332A] text-white text-xs font-bold shadow-xs">
-                        Print 48 Labels (PDF/ZPL)
-                      </span>
-                    </div>
-
-                    <div className="mt-4 space-y-2.5">
-                      {[
-                        { id: '#ORD-9842', buyer: 'Emma Laurent · Paris (FR)', weight: '1.4 kg', carrier: 'DHL Parcel Connect', badge: 'Label Ready' },
-                        { id: '#ORD-9843', buyer: 'Jan de Vries · Amsterdam (NL)', weight: '2.8 kg', carrier: 'PostNL Standard', badge: 'Label Ready' },
-                        { id: '#ORD-9844', buyer: 'Sophie Becker · Frankfurt (DE)', weight: '0.9 kg', carrier: 'DPD Classic', badge: 'Label Ready' },
-                        { id: '#ORD-9845', buyer: 'Liam Murphy · Dublin (IE)', weight: '3.1 kg', carrier: 'UPS Standard', badge: 'Label Ready' },
-                      ].map((row, i) => (
-                        <div key={i} className="p-3 rounded-xl bg-white border border-slate-200/80 flex items-center justify-between text-xs">
-                          <div className="flex items-center gap-3">
-                            <span className="w-4 h-4 rounded bg-[#17332A] text-white flex items-center justify-center text-[10px] font-bold">
-                              ✓
-                            </span>
-                            <div>
-                              <span className="font-bold text-slate-900">{row.id}</span>
-                              <span className="text-slate-500 ml-2">{row.buyer}</span>
-                            </div>
-                          </div>
-                          <div className="flex items-center gap-3">
-                            <span className="font-medium text-slate-600 hidden sm:inline">{row.weight}</span>
-                            <span className="font-bold text-slate-800 bg-slate-100 px-2 py-0.5 rounded text-[11px]">{row.carrier}</span>
-                            <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold text-[10px]">{row.badge}</span>
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs text-slate-600">
-                    <span className="font-medium">All international customs declarations (CN22/IOSS) automatically attached</span>
-                    <span className="font-bold text-emerald-700">Ready in 0.4s</span>
-                  </div>
+              {/* Products List (Left Side — 7 Cols) */}
+              <div className="md:col-span-7 space-y-2">
+                <div className="flex items-center justify-between px-1 pb-1">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    ORDERS IN QUEUE (5)
+                  </span>
+                  {activeTab === 0 && (
+                    <span className="text-[10px] font-bold text-[#17332A] bg-[#E6FAF5] px-2 py-0.5 rounded-full">
+                      All Selected
+                    </span>
+                  )}
                 </div>
-              )}
 
-              {/* STATE 1: Smart Carrier Routing */}
-              {activeTab === 1 && (
-                <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
-                  <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
-                      <div>
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                          LEAST-COST CARRIER ENGINE
-                        </span>
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
-                          Amsterdam Hub ➔ Berlin Depot · 2.4 kg Parcel
-                        </h4>
+                {products.map((prod) => {
+                  const isSelected = selectedProduct === prod.id;
+                  return (
+                    <div
+                      key={prod.id}
+                      onClick={() => setSelectedProduct(prod.id)}
+                      className={`flex items-center gap-3 p-2.5 sm:p-3 rounded-xl transition-all cursor-pointer ${
+                        isSelected
+                          ? 'bg-[#E6FAF5] border border-[#70CAB9]/40 shadow-xs'
+                          : 'bg-white hover:bg-slate-50 border border-transparent'
+                      }`}
+                    >
+                      {/* Product Thumbnail */}
+                      <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-slate-100 border border-slate-200/80 flex items-center justify-center">
+                        <img
+                          src={prod.image}
+                          alt={prod.title}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            // Fallback if image path has issue
+                            (e.target as HTMLElement).style.display = 'none';
+                          }}
+                        />
                       </div>
-                      <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
-                        Auto-Routing Rule #104 Active
-                      </span>
-                    </div>
 
-                    <div className="mt-4 space-y-2.5">
-                      {/* Selected option */}
-                      <div className="p-3.5 sm:p-4 rounded-xl bg-white border-2 border-[#17332A] flex items-center justify-between text-xs shadow-xs">
-                        <div className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-[#17332A] text-[#70CAB9] flex items-center justify-center font-bold text-xs">
-                            ✓
+                      {/* Title & Metadata */}
+                      <div className="flex-1 min-w-0">
+                        <p className={`text-xs sm:text-[13px] leading-tight truncate ${
+                          isSelected ? 'font-bold text-[#17332A]' : 'font-medium text-[#424242]'
+                        }`}>
+                          {prod.title}
+                        </p>
+                        <p className="text-[10px] text-slate-400 mt-0.5">
+                          {prod.sku} · {prod.weight}
+                        </p>
+                      </div>
+
+                      {/* Selected Indicator */}
+                      {isSelected && (
+                        <span className="w-4 h-4 rounded-full bg-[#17332A] text-white flex items-center justify-center shrink-0">
+                          <Check className="w-2.5 h-2.5 text-[#70CAB9]" />
+                        </span>
+                      )}
+                    </div>
+                  );
+                })}
+
+                {/* Sub-feature state banner (Interactive Feedback for Tracking / Returns) */}
+                {activeTab === 2 && (
+                  <div className="mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#48C293] shrink-0" />
+                    <span>Branded tracking notifications automatically dispatched upon label generation.</span>
+                  </div>
+                )}
+                {activeTab === 3 && (
+                  <div className="mt-3 p-2.5 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 flex items-center gap-2">
+                    <QrCode className="w-4 h-4 text-[#17332A] shrink-0" />
+                    <span>Instant paperless return pass & drop-off QR generated automatically.</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Carriers List & Action Button (Right Side — 5 Cols) */}
+              <div className="md:col-span-5 bg-[#F9FBFA] p-3 sm:p-3.5 rounded-2xl border border-slate-200/80 flex flex-col space-y-2">
+                <div className="flex items-center justify-between px-1 pb-0.5">
+                  <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
+                    CARRIER RATES
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-medium">Auto-Optimized</span>
+                </div>
+
+                {carriers.map((car) => {
+                  const isSelected = selectedCarrier === car.id;
+                  const isRecommended = car.badge && activeTab === 1;
+                  return (
+                    <button
+                      key={car.id}
+                      onClick={() => setSelectedCarrier(car.id)}
+                      className={`w-full p-2.5 rounded-xl border text-left transition-all flex items-center justify-between ${
+                        isSelected
+                          ? 'bg-white border-[#70CAB9] shadow-sm ring-1 ring-[#70CAB9]/20'
+                          : 'bg-white/80 border-slate-200/80 hover:bg-white hover:border-slate-300'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="w-12 h-5 flex items-center justify-center shrink-0">
+                          <img
+                            src={car.logo}
+                            alt={car.name}
+                            className="max-w-full max-h-full object-contain"
+                          />
+                        </div>
+                        <span className="text-xs font-bold text-slate-800 truncate">
+                          {car.name}
+                        </span>
+                      </div>
+
+                      <div className="text-right shrink-0">
+                        <span className="text-xs font-bold text-[#17332A]">{car.rate}</span>
+                        {car.badge && (
+                          <span className="block text-[9px] font-bold text-emerald-700 leading-none">
+                            {car.badge}
                           </span>
-                          <div>
-                            <span className="font-bold text-slate-900 text-sm">DHL Parcel Connect</span>
-                            <span className="text-slate-500 block text-[11px]">Guaranteed Next-Day · 99.4% SLA</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-base font-extrabold text-[#17332A]">€2.84</span>
-                          <span className="text-[10px] text-emerald-700 font-bold block">Lowest Rate (-€0.61)</span>
-                        </div>
+                        )}
                       </div>
+                    </button>
+                  );
+                })}
 
-                      {/* Alternatives */}
-                      <div className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs opacity-75">
-                        <div className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold text-xs">
-                            —
-                          </span>
-                          <div>
-                            <span className="font-bold text-slate-800">DPD Classic</span>
-                            <span className="text-slate-400 block text-[11px]">24-48h Delivery</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-sm font-bold text-slate-800">€3.10</span>
-                          <span className="text-[10px] text-slate-400 block">Negotiated contract</span>
-                        </div>
-                      </div>
-
-                      <div className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs opacity-75">
-                        <div className="flex items-center gap-3">
-                          <span className="w-5 h-5 rounded-full bg-slate-100 text-slate-400 flex items-center justify-center font-bold text-xs">
-                            —
-                          </span>
-                          <div>
-                            <span className="font-bold text-slate-800">PostNL Priority</span>
-                            <span className="text-slate-400 block text-[11px]">48h Delivery</span>
-                          </div>
-                        </div>
-                        <div className="text-right">
-                          <span className="text-sm font-bold text-slate-800">€3.45</span>
-                          <span className="text-[10px] text-slate-400 block">List rate</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs text-slate-600">
-                    <span className="font-medium">Rule criteria: Lowest contracted cost with next-day handover SLA</span>
-                    <span className="font-bold text-[#17332A]">18ms latency</span>
-                  </div>
+                {/* Prominent "Create label" Button */}
+                <div className="pt-2">
+                  <button
+                    onClick={handleCreateLabel}
+                    className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs sm:text-sm text-white transition-all duration-200 flex items-center justify-center gap-2 shadow-sm cursor-pointer ${
+                      isLabelCreated
+                        ? 'bg-emerald-600'
+                        : 'bg-[#70CAB9] hover:bg-[#5dbba9] active:scale-[0.99]'
+                    }`}
+                  >
+                    {isLabelCreated ? (
+                      <>
+                        <CheckCircle2 className="w-4 h-4 text-white" />
+                        <span>Label Ready (PDF Generated)</span>
+                      </>
+                    ) : (
+                      <span>Create label</span>
+                    )}
+                  </button>
                 </div>
-              )}
-
-              {/* STATE 2: Branded Tracking */}
-              {activeTab === 2 && (
-                <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
-                  <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
-                      <div>
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                          CUSTOMER BRANDED TRACKING
-                        </span>
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
-                          tracking.yourstore.com / #ZN-94821
-                        </h4>
-                      </div>
-                      <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
-                        Out for Delivery Today
-                      </span>
-                    </div>
-
-                    {/* Timeline box */}
-                    <div className="mt-4 p-4 rounded-xl bg-white border border-slate-200 space-y-3">
-                      <div className="flex items-center justify-between text-xs">
-                        <span className="font-bold text-slate-800">Estimated Delivery: Today 14:15 – 15:45</span>
-                        <span className="text-slate-500 font-mono">Driver: Marco (Stop 28)</span>
-                      </div>
-
-                      <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                        <div className="bg-[#48C293] h-full w-3/4 rounded-full" />
-                      </div>
-
-                      <div className="grid grid-cols-3 text-[11px] text-slate-500 pt-1">
-                        <div>
-                          <span className="font-bold text-slate-800 block">08:15</span>
-                          <span>Sorted at Depot</span>
-                        </div>
-                        <div className="text-center">
-                          <span className="font-bold text-slate-800 block">11:30</span>
-                          <span>Loaded on van</span>
-                        </div>
-                        <div className="text-right">
-                          <span className="font-bold text-emerald-700 block">14:15</span>
-                          <span>Doorstep delivery</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs text-slate-600">
-                    <span className="font-medium">100% white-labeled tracking domain with SMS status webhooks</span>
-                    <span className="font-bold text-emerald-700">+42% Repeat Visits</span>
-                  </div>
-                </div>
-              )}
-
-              {/* STATE 3: Automated Returns Portal */}
-              {activeTab === 3 && (
-                <div className="transition-opacity duration-200 ease-in-out flex flex-col h-full justify-between space-y-4">
-                  <div>
-                    <div className="flex flex-wrap items-center justify-between gap-3 pb-3.5 border-b border-slate-200">
-                      <div>
-                        <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block">
-                          SELF-SERVICE RETURNS PORTAL
-                        </span>
-                        <h4 className="text-base sm:text-lg font-bold text-slate-900 mt-0.5">
-                          Instant Digital Return Pass #RET-4819
-                        </h4>
-                      </div>
-                      <span className="px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-800 border border-emerald-200 text-xs font-bold">
-                        Instant QR Drop-off Active
-                      </span>
-                    </div>
-
-                    <div className="mt-4 p-4 rounded-xl bg-white border border-slate-200 flex items-center justify-between gap-4">
-                      <div>
-                        <span className="font-bold text-sm text-slate-900 block">Return Item: Merino Wool Overshirt</span>
-                        <span className="text-xs text-slate-500 mt-0.5 block">Reason: Exchange for Size Large · Approved</span>
-                        <span className="text-xs font-semibold text-emerald-700 mt-2 block">
-                          No printer required — scan QR code at nearest parcel point
-                        </span>
-                      </div>
-
-                      <div className="w-18 h-18 rounded-xl bg-slate-900 text-white flex flex-col items-center justify-center shrink-0 p-2 shadow-xs">
-                        <QrCode className="w-9 h-9 text-[#70CAB9]" />
-                        <span className="text-[9px] font-mono mt-0.5 font-bold">QR PASS</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="p-3 rounded-xl bg-white border border-slate-200 flex items-center justify-between text-xs text-slate-600">
-                    <span className="font-medium">3,800+ PostNL & DPD drop-off points with automated inventory restock sync</span>
-                    <span className="font-bold text-[#17332A]">3x Faster Returns</span>
-                  </div>
-                </div>
-              )}
+              </div>
 
             </div>
           </div>
