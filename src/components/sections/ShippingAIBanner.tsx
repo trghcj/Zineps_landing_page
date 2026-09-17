@@ -81,7 +81,7 @@ const ShippingAIBanner: React.FC = () => {
               <div>
                 <a
                   href="#integrations"
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm bg-white text-[#2f4a42] hover:bg-[#E6FAF5] shadow-lg transition hover:scale-105"
+                  className="zineps-cta-btn inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-bold text-sm transition-all"
                 >
                   <span>{lang === 'en' ? 'Explore Shipping AI' : 'Ontdek Shipping AI'}</span>
                   <ArrowRight className="w-4 h-4" />

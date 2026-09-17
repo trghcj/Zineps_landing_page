@@ -182,30 +182,30 @@ const PartnerRatesSection: React.FC = () => {
               </div>
 
               {/* Sample Product Recalculation Toggle */}
-              <div className="my-5">
-                <div className="flex items-center justify-between mb-2.5">
-                  <span className="text-xs font-bold text-slate-600 uppercase tracking-wider">
-                    Select sample parcel type:
+              <div className="mt-5 mb-7">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="text-xs font-bold text-slate-500 uppercase tracking-wider">
+                    {lang === 'en' ? 'Select sample parcel type:' : 'Kies type pakket:'}
                   </span>
-                  <span className="text-xs font-medium text-[#48C293]">
+                  <span className="text-xs font-semibold text-[#48C293]">
                     {lang === 'en' ? 'Instant dynamic quote update' : 'Directe live herberekening'}
                   </span>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-5 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
                   {sampleProducts.map((p) => {
                     const isSelected = selectedProduct.id === p.id;
                     return (
                       <button
                         key={p.id}
                         onClick={() => setSelectedProduct(p)}
-                        className={`flex flex-col justify-between p-3 rounded-2xl border transition-all text-left min-h-[82px] cursor-pointer ${
+                        className={`flex flex-col justify-between p-3.5 rounded-2xl border transition-all text-left min-h-[88px] cursor-pointer ${
                           isSelected
-                            ? 'border-2 border-[#48C293] bg-[#F3FBF7] shadow-xs scale-[1.01] ring-2 ring-[#48C293]/20'
+                            ? 'border-2 border-[#48C293] bg-[#F3FBF7] shadow-sm ring-2 ring-[#48C293]/20'
                             : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/70'
                         }`}
                       >
-                        <div className="flex items-center justify-between w-full mb-1">
+                        <div className="flex items-center justify-between w-full mb-1.5">
                           <span className="text-xl leading-none">{p.icon}</span>
                           {isSelected && (
                             <span className="w-2 h-2 rounded-full bg-[#48C293]" />
@@ -226,7 +226,7 @@ const PartnerRatesSection: React.FC = () => {
               </div>
 
               {/* Interactive Live Quotes Comparison */}
-              <div className="space-y-3">
+              <div className="space-y-3.5">
                 {baseQuotes.map((quote) => {
                   const calculatedRate = (
                     quote.baseCost *
