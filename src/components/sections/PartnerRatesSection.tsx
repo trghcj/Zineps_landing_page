@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useLang } from '@/App';
-import { ArrowRight, Sparkles, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Sparkles, ShieldCheck, Check } from 'lucide-react';
 
 export interface SampleTier {
   id: string;
@@ -146,10 +146,10 @@ const PartnerRatesSection: React.FC = () => {
             </div>
 
             {/* Right Column: Interactive Product Demonstration Panel */}
-            <div className="lg:col-span-7 w-full bg-white text-slate-900 rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 flex flex-col justify-between">
+            <div className="lg:col-span-7 w-full bg-white text-slate-900 rounded-3xl p-5 sm:p-7 md:p-8 shadow-2xl border border-slate-100 flex flex-col justify-between">
               
               {/* Header Group */}
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-5 border-b border-slate-100">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 mb-4 border-b border-slate-100">
                 <div>
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 block mb-0.5">
                     SAMPLE LIVE RATE COMPARISON
@@ -165,11 +165,11 @@ const PartnerRatesSection: React.FC = () => {
               </div>
 
               {/* Parcel Category Selector Group */}
-              <div className="my-5">
-                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2.5">
-                  {lang === 'en' ? 'Select parcel category:' : 'Kies pakketcategorie:'}
+              <div className="mb-4">
+                <span className="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">
+                  {lang === 'en' ? 'SELECT PARCEL CATEGORY:' : 'KIES PAKKETCATEGORIE:'}
                 </span>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5">
                   {packageTiers.map((tier) => {
                     const isSelected = selectedTier.id === tier.id;
                     return (
@@ -177,7 +177,7 @@ const PartnerRatesSection: React.FC = () => {
                         key={tier.id}
                         type="button"
                         onClick={() => setSelectedTier(tier)}
-                        className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-between min-h-[70px] cursor-pointer ${
+                        className={`p-3 rounded-xl border text-left transition-all flex flex-col justify-center min-h-[64px] cursor-pointer ${
                           isSelected
                             ? 'border-2 border-[#17332A] bg-[#F3FBF7] shadow-xs'
                             : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/80'
@@ -195,8 +195,8 @@ const PartnerRatesSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Carrier Rows Group - Fixed Width Vertical Alignment for Prices & Actions */}
-              <div className="space-y-2.5 my-1">
+              {/* Carrier Rows Group - Clean Single Row Layout (No lines above price) */}
+              <div className="space-y-3">
                 {quotesWithCalculated.map((quote) => {
                   const isSelected = selectedCarrier === quote.carrierName;
                   const isLowest = parseFloat(quote.calculatedRate) === lowestRateVal;
@@ -205,15 +205,15 @@ const PartnerRatesSection: React.FC = () => {
                     <div
                       key={quote.carrierName}
                       onClick={() => setSelectedCarrier(quote.carrierName)}
-                      className={`p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex flex-col sm:flex-row sm:items-center justify-between gap-3 ${
+                      className={`p-3.5 sm:p-4 rounded-2xl border transition-all cursor-pointer flex items-center justify-between gap-3 sm:gap-4 ${
                         isSelected
                           ? 'border-2 border-[#17332A] bg-[#F3FBF7]/70 shadow-sm'
                           : 'border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50/70'
                       }`}
                     >
                       {/* Left: Carrier Info */}
-                      <div className="flex items-center gap-3.5 flex-1 min-w-0">
-                        <div className="w-12 h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 p-2">
+                      <div className="flex items-center gap-3 sm:gap-3.5 flex-1 min-w-0">
+                        <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 p-2">
                           <img src={quote.logo} alt={quote.carrierName} className="h-6 w-auto object-contain" />
                         </div>
                         <div className="min-w-0">
@@ -233,24 +233,26 @@ const PartnerRatesSection: React.FC = () => {
                         </div>
                       </div>
 
-                      {/* Right: Fixed-Width Price & Action Area for Perfect Vertical Alignment */}
-                      <div className="flex items-center justify-between sm:justify-end gap-5 shrink-0 pt-2 sm:pt-0 border-t sm:border-t-0 border-slate-100">
-                        <div className="w-24 text-right">
-                          <div className="text-xl sm:text-2xl font-black text-[#161D1A]">
+                      {/* Right: Price & Button (Clean Horizontal Alignment, Never Wrapped) */}
+                      <div className="flex items-center gap-4 sm:gap-5 shrink-0">
+                        <div className="text-right">
+                          <div className="text-xl sm:text-2xl font-black text-[#161D1A] leading-tight">
                             €{quote.calculatedRate}
                           </div>
                           <span className="text-[10px] font-medium text-slate-400 block">excl. VAT</span>
                         </div>
-                        <button
-                          type="button"
-                          className={`w-24 py-1.5 rounded-full text-xs font-bold transition-all text-center ${
-                            isSelected
-                              ? 'bg-[#17332A] text-white'
-                              : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                          }`}
+
+                        {/* Explicit solid button badge that is guaranteed high-contrast */}
+                        <div
+                          style={{
+                            backgroundColor: isSelected ? '#17332A' : '#F1F5F9',
+                            color: isSelected ? '#FFFFFF' : '#334155',
+                          }}
+                          className="w-22 sm:w-24 py-1.5 px-2 rounded-full text-xs font-bold text-center flex items-center justify-center gap-1 transition-all shadow-2xs"
                         >
-                          {isSelected ? 'Selected' : 'Select'}
-                        </button>
+                          {isSelected && <Check className="w-3.5 h-3.5 text-[#70CAB9] shrink-0" />}
+                          <span>{isSelected ? 'Selected' : 'Select'}</span>
+                        </div>
                       </div>
                     </div>
                   );

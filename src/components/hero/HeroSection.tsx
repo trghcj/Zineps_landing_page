@@ -44,23 +44,17 @@ const HeroSection: React.FC = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#161D1A] leading-[1.08] mb-6"
+            className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#161D1A] leading-[1.12] mb-6"
           >
             {lang === 'en' ? (
               <>
-                For businesses that ship, and the{' '}
-                <span className="bg-gradient-to-r from-[#17332A] via-[#2D5E4F] to-[#48C293] bg-clip-text text-transparent">
-                  logistics partners
-                </span>{' '}
-                that move their goods.
+                For businesses that ship,<br className="hidden sm:inline" />
+                {' '}and the <span className="text-[#17332A]">logistics partners</span> that move their goods.
               </>
             ) : (
               <>
-                Voor bedrijven die verzenden, en de{' '}
-                <span className="bg-gradient-to-r from-[#17332A] via-[#2D5E4F] to-[#48C293] bg-clip-text text-transparent">
-                  logistieke partners
-                </span>{' '}
-                die hen vooruithelpen.
+                Voor bedrijven die verzenden,<br className="hidden sm:inline" />
+                {' '}en de <span className="text-[#17332A]">logistieke partners</span> die hen vooruithelpen.
               </>
             )}
           </motion.h1>
