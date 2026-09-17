@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLang } from '@/App';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Code2, ShieldCheck, CheckCircle2 } from 'lucide-react';
 
-const WhyZinepsGrid: React.FC = () => {
+export const WhyZinepsGrid: React.FC = () => {
   const { lang } = useLang();
+
+  // Dynamic interactive graph state for Card 03
+  const [hoveredPoint, setHoveredPoint] = useState<number | null>(null);
+
+  const trajectoryData = [
+    { month: 'Jan', cost: '€3.25', savings: 'Baseline (0%)', x: 15, y: 16 },
+    { month: 'Feb', cost: '€3.08', savings: '-5.2% saved', x: 78, y: 24 },
+    { month: 'Mar', cost: '€2.89', savings: '-11.1% saved', x: 141, y: 34 },
+    { month: 'Apr', cost: '€2.72', savings: '-16.3% saved', x: 204, y: 44 },
+    { month: 'May', cost: '€2.55', savings: '-21.5% saved', x: 267, y: 52 },
+    { month: 'Jun', cost: '€2.41', savings: '-25.8% saved', x: 325, y: 60 },
+  ];
+
+  const activeData = (hoveredPoint !== null ? trajectoryData[hoveredPoint] : trajectoryData[5]) ?? trajectoryData[0]!;
 
   return (
     <section id="why-zineps" className="w-full py-16 md:py-24 relative bg-white overflow-hidden scroll-mt-24">
@@ -58,67 +72,49 @@ const WhyZinepsGrid: React.FC = () => {
               </p>
 
               {/* Workflow Process: Primary Visual Focal Point with Connected Sequence & Aligned Columns */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
-                <div className="relative space-y-4 sm:space-y-5">
-                  {/* Subtle connecting vertical process line */}
-                  <div className="absolute left-3.5 top-3.5 bottom-3.5 w-px bg-slate-200 z-0" />
-
-                  {/* Step 1 */}
-                  <div className="relative z-10 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs">
-                        1
+              <div className="space-y-3.5 mb-6">
+                {[
+                  { step: '01', title: 'Orders Imported', val: 'Shopify #4829', status: 'Live Sync', icon: '✦' },
+                  { step: '02', title: 'Best Rate Selected', val: 'DHL Parcel · €2.84', status: 'Lowest Cost', icon: '✓' },
+                  { step: '03', title: 'Label & Tracking Dispatched', val: '100% Automated', status: 'Instant PDF', icon: '●' },
+                ].map((row, idx) => (
+                  <div
+                    key={idx}
+                    className="p-3.5 sm:p-4 rounded-2xl bg-white border border-slate-200/90 shadow-2xs hover:border-slate-300 transition-all flex items-center justify-between gap-3"
+                  >
+                    <div className="flex items-center gap-3.5 min-w-0">
+                      <div className="w-8 h-8 rounded-xl bg-[#E9F8F2] text-[#17332A] flex items-center justify-center font-bold text-xs shrink-0">
+                        {row.icon}
                       </div>
-                      <span className="font-semibold text-xs sm:text-sm text-slate-800">
-                        Order imported from webshop
+                      <div className="min-w-0">
+                        <span className="font-bold text-xs sm:text-sm text-slate-900 block truncate">
+                          {row.title}
+                        </span>
+                        <span className="text-[11px] text-slate-400 block font-medium">
+                          Step {row.step} • {row.status}
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Razor-sharp vertically aligned right-side column */}
+                    <div className="w-36 shrink-0 text-right">
+                      <span className="text-xs font-mono font-bold text-slate-800 bg-slate-50 border border-slate-100 px-2 py-1 rounded block truncate">
+                        {row.val}
                       </span>
                     </div>
-                    <span className="w-36 font-mono text-[11px] text-slate-500 bg-slate-50 px-2.5 py-1 rounded border border-slate-100 shrink-0 text-right">
-                      Shopify #4829
-                    </span>
                   </div>
-
-                  {/* Step 2 */}
-                  <div className="relative z-10 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs">
-                        2
-                      </div>
-                      <span className="font-semibold text-xs sm:text-sm text-slate-800">
-                        Cheapest carrier matched
-                      </span>
-                    </div>
-                    <span className="w-36 font-bold text-[11px] text-[#17332A] bg-[#E9F8F2] px-2.5 py-1 rounded border border-[#70CAB9]/30 shrink-0 text-right">
-                      DHL Parcel · €2.84
-                    </span>
-                  </div>
-
-                  {/* Step 3 */}
-                  <div className="relative z-10 flex items-center justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-7 h-7 rounded-full bg-[#E9F8F2] text-[#17332A] border border-[#70CAB9]/40 flex items-center justify-center text-xs font-bold shrink-0 shadow-2xs">
-                        3
-                      </div>
-                      <span className="font-semibold text-xs sm:text-sm text-slate-800">
-                        Label printed & tracking dispatched
-                      </span>
-                    </div>
-                    <span className="w-36 font-semibold text-[11px] text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200 shrink-0 text-right">
-                      100% Automated
-                    </span>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Consistently Aligned Footer */}
             <div className="mt-auto pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-semibold text-[#17332A]">
-              <span>Zero fragmented portal logins</span>
+              <span>Zero manual data entry</span>
               <ArrowUpRight className="w-4 h-4 text-slate-400 group-hover:text-[#17332A] transition-colors" />
             </div>
           </div>
 
-          {/* CARD 02 — INTEGRATIONS (Primary Focus: Integration Matrix) */}
+          {/* CARD 02 — INTEGRATIONS (With Official Company Logos) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
@@ -141,26 +137,43 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Koppel je shops en marktplaatsen naadloos. Orders worden automatisch realtime gesynchroniseerd zonder handmatig overtypen.'}
               </p>
 
-              {/* 3×2 Integration Matrix with Identical Tile Dimensions & Refined Hierarchy */}
+              {/* 3×2 Integration Matrix With Official Company Logos */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                 {[
-                  { name: 'Shopify', desc: 'Direct Store Sync' },
-                  { name: 'WooCommerce', desc: 'Plugin Connected' },
-                  { name: 'Bol.com', desc: 'Partner API' },
-                  { name: 'Amazon', desc: 'FBA & FBM' },
-                  { name: 'Exact Online', desc: 'Accounting Sync' },
-                  { name: 'REST & GraphQL', desc: 'Custom API' },
+                  { name: 'Shopify', desc: 'Direct Store Sync', logo: '/hero-shopify.svg' },
+                  { name: 'WooCommerce', desc: 'Plugin Connected', logo: '/hero-woo.svg' },
+                  { name: 'Bol.com', desc: 'Partner API', logo: '/hero-bol.svg' },
+                  { name: 'Amazon', desc: 'FBA & FBM', logo: '/hero-amazon.svg' },
+                  { name: 'Exact Online', desc: 'Accounting Sync', logo: '/exact-logo.svg' },
+                  { name: 'REST & GraphQL', desc: 'Custom API', isCode: true },
                 ].map((item, idx) => (
                   <div
                     key={idx}
-                    className="h-[76px] p-3.5 rounded-xl bg-white border border-slate-200 flex flex-col justify-center shadow-2xs hover:border-slate-300 transition-all"
+                    className="h-[76px] p-3 rounded-xl bg-white border border-slate-200 flex items-center gap-3 shadow-2xs hover:border-[#48C293]/60 hover:shadow-xs transition-all cursor-pointer"
                   >
-                    <span className="font-bold text-xs text-slate-900 leading-tight block">
-                      {item.name}
-                    </span>
-                    <span className="text-[10px] text-slate-500 mt-1 font-medium leading-tight block">
-                      {item.desc}
-                    </span>
+                    {/* Official Company Logo */}
+                    <div className="w-9 h-9 rounded-lg bg-slate-50 border border-slate-100 flex items-center justify-center shrink-0 p-1">
+                      {item.isCode ? (
+                        <div className="w-full h-full rounded bg-[#E9F8F2] flex items-center justify-center">
+                          <Code2 className="w-4 h-4 text-[#17332A]" />
+                        </div>
+                      ) : (
+                        <img
+                          src={item.logo}
+                          alt={item.name}
+                          className="max-w-full max-h-full object-contain"
+                        />
+                      )}
+                    </div>
+
+                    <div className="min-w-0 flex-1">
+                      <span className="font-bold text-xs text-slate-900 leading-tight block truncate">
+                        {item.name}
+                      </span>
+                      <span className="text-[10px] text-slate-500 mt-0.5 font-medium leading-tight block truncate">
+                        {item.desc}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -173,7 +186,7 @@ const WhyZinepsGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* CARD 03 — COST CONTROL (Primary Focus: Analytics / KPI Dominance) */}
+          {/* CARD 03 — COST CONTROL (Dynamic Graph with Cursor Hover Interactivity) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
@@ -181,7 +194,9 @@ const WhyZinepsGrid: React.FC = () => {
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#E9F8F2] text-[#17332A] uppercase tracking-wider">
                   03 • Cost Control
                 </span>
-                <span className="text-xs font-bold text-emerald-600">-28% avg spend</span>
+                <span className="text-xs font-bold text-emerald-600">
+                  {hoveredPoint !== null ? activeData.savings : '-28% avg spend'}
+                </span>
               </div>
 
               {/* Title */}
@@ -196,7 +211,7 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Volledige transparantie over brandstoftoeslagen, piekkosten en vervoerdersprestaties per individueel pakket.'}
               </p>
 
-              {/* Two Prominent KPIs + Complete Full-Width Monthly Fulfillment Audit Graph */}
+              {/* Two Prominent KPIs + Complete Dynamic Hover Graph */}
               <div className="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6">
                 <div className="flex items-center justify-between pb-3.5 border-b border-slate-100 text-xs text-slate-500">
                   <span className="font-semibold text-slate-700">Monthly Fulfillment Audit</span>
@@ -205,16 +220,18 @@ const WhyZinepsGrid: React.FC = () => {
                   </span>
                 </div>
 
-                {/* 2 Primary KPI Highlights */}
+                {/* 2 Primary KPI Highlights (Responds dynamically to hovered month) */}
                 <div className="grid grid-cols-2 gap-4 pt-4 pb-3 items-start">
                   {/* KPI 1: Cost */}
                   <div>
-                    <span className="text-xs text-slate-400 block font-medium">Avg Cost / Parcel</span>
+                    <span className="text-xs text-slate-400 block font-medium">
+                      {hoveredPoint !== null ? `Cost in ${activeData.month}` : 'Avg Cost / Parcel'}
+                    </span>
                     <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block mt-1">
-                      €2.41
+                      {activeData.cost}
                     </span>
                     <span className="text-[11px] font-semibold text-emerald-700 block mt-1">
-                      ↓ €0.84 saved vs list rate
+                      {hoveredPoint !== null ? activeData.savings : '↓ €0.84 saved vs list rate'}
                     </span>
                   </div>
 
@@ -230,39 +247,55 @@ const WhyZinepsGrid: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Full-Width Monthly Cost Reduction Audit Graph */}
+                {/* Full-Width Dynamic Interactive Graph */}
                 <div className="mt-4 pt-4 border-t border-slate-100">
                   <div className="flex items-center justify-between mb-2">
                     <span className="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider">
                       6-Month Cost Trajectory
                     </span>
-                    <span className="text-[11px] font-bold text-emerald-700">
-                      -25.8% Optimization
+                    <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200">
+                      {activeData.month}: {activeData.cost} ({activeData.savings})
                     </span>
                   </div>
 
-                  {/* Complete, Full-Width Area & Line Graph */}
-                  <div className="w-full h-20 sm:h-24 relative mt-1">
-                    <svg className="w-full h-full overflow-visible" viewBox="0 0 340 70" preserveAspectRatio="none">
+                  {/* Complete, Full-Width Area & Line Graph with Interactive Hover Points */}
+                  <div className="w-full h-24 sm:h-28 relative mt-1">
+                    <svg
+                      className="w-full h-full overflow-visible"
+                      viewBox="0 0 340 70"
+                      preserveAspectRatio="none"
+                    >
                       <defs>
                         <linearGradient id="costAuditGrad" x1="0" y1="0" x2="0" y2="1">
-                          <stop offset="0%" stopColor="#48C293" stopOpacity="0.28" />
+                          <stop offset="0%" stopColor="#48C293" stopOpacity="0.3" />
                           <stop offset="100%" stopColor="#48C293" stopOpacity="0.02" />
                         </linearGradient>
                       </defs>
                       {/* Grid guide lines */}
-                      <line x1="10" y1="15" x2="330" y2="15" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
+                      <line x1="10" y1="16" x2="330" y2="16" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
                       <line x1="10" y1="40" x2="330" y2="40" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
                       
+                      {/* Dynamic vertical indicator line for active hover */}
+                      <line
+                        x1={activeData.x}
+                        y1="10"
+                        x2={activeData.x}
+                        y2="66"
+                        stroke="#70CAB9"
+                        strokeWidth="1.5"
+                        strokeDasharray="2 2"
+                        className="transition-all duration-150"
+                      />
+
                       {/* Area Fill */}
                       <path
-                        d="M 10 16 L 74 24 L 138 34 L 202 44 L 266 52 L 330 60 L 330 70 L 10 70 Z"
+                        d="M 15 16 L 78 24 L 141 34 L 204 44 L 267 52 L 325 60 L 325 70 L 15 70 Z"
                         fill="url(#costAuditGrad)"
                       />
                       
                       {/* Trend Line */}
                       <path
-                        d="M 10 16 L 74 24 L 138 34 L 202 44 L 266 52 L 330 60"
+                        d="M 15 16 L 78 24 L 141 34 L 204 44 L 267 52 L 325 60"
                         fill="none"
                         stroke="#48C293"
                         strokeWidth="2.5"
@@ -270,24 +303,62 @@ const WhyZinepsGrid: React.FC = () => {
                         strokeLinejoin="round"
                       />
                       
-                      {/* Data points */}
-                      <circle cx="10" cy="16" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
-                      <circle cx="74" cy="24" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
-                      <circle cx="138" cy="34" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
-                      <circle cx="202" cy="44" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
-                      <circle cx="266" cy="52" r="3" fill="#FFFFFF" stroke="#48C293" strokeWidth="2" />
-                      <circle cx="330" cy="60" r="4.5" fill="#17332A" stroke="#48C293" strokeWidth="2" />
+                      {/* Interactive Data dots */}
+                      {trajectoryData.map((pt, i) => {
+                        const isHovered = hoveredPoint === i;
+                        const isCurrent = i === 5 && hoveredPoint === null;
+                        const isActive = isHovered || isCurrent;
+                        return (
+                          <g
+                            key={i}
+                            className="cursor-pointer"
+                            onMouseEnter={() => setHoveredPoint(i)}
+                            onMouseLeave={() => setHoveredPoint(null)}
+                          >
+                            {/* Larger invisible hit zone for smooth mouse interaction */}
+                            <circle cx={pt.x} cy={pt.y} r="14" fill="transparent" />
+                            
+                            {/* Outer glow ring on active */}
+                            {isActive && (
+                              <circle cx={pt.x} cy={pt.y} r="8" fill="#48C293" fillOpacity="0.25" />
+                            )}
+                            
+                            {/* Data circle */}
+                            <circle
+                              cx={pt.x}
+                              cy={pt.y}
+                              r={isActive ? 5 : 3}
+                              fill={isActive ? '#17332A' : '#FFFFFF'}
+                              stroke="#48C293"
+                              strokeWidth={isActive ? 2.5 : 2}
+                              className="transition-all duration-150"
+                            />
+                          </g>
+                        );
+                      })}
                     </svg>
                   </div>
 
-                  {/* Month axis labels */}
-                  <div className="flex items-center justify-between text-[10px] font-mono text-slate-400 mt-2 px-1">
-                    <span>Jan (€3.25)</span>
-                    <span>Feb</span>
-                    <span>Mar</span>
-                    <span>Apr</span>
-                    <span>May</span>
-                    <span className="font-bold text-[#17332A]">Jun (€2.41)</span>
+                  {/* Month axis buttons: Clickable / Hoverable */}
+                  <div className="flex items-center justify-between text-[11px] font-mono mt-2 px-1">
+                    {trajectoryData.map((pt, i) => {
+                      const isActive = hoveredPoint === i || (hoveredPoint === null && i === 5);
+                      return (
+                        <button
+                          key={i}
+                          type="button"
+                          onMouseEnter={() => setHoveredPoint(i)}
+                          onMouseLeave={() => setHoveredPoint(null)}
+                          className={`px-1.5 py-0.5 rounded transition-all cursor-pointer ${
+                            isActive
+                              ? 'text-[#17332A] font-bold bg-[#E9F8F2] border border-[#48C293]/40 shadow-2xs'
+                              : 'text-slate-400 hover:text-slate-700'
+                          }`}
+                        >
+                          {pt.month}
+                        </button>
+                      );
+                    })}
                   </div>
                 </div>
               </div>
@@ -300,7 +371,7 @@ const WhyZinepsGrid: React.FC = () => {
             </div>
           </div>
 
-          {/* CARD 04 — GLOBAL SCALE (Primary Focus: Network Reach / Prominent Metrics) */}
+          {/* CARD 04 — GLOBAL SCALE (With Live Failover Mesh Telemetry to Fill Empty Space) */}
           <div className="w-full rounded-3xl p-6 sm:p-8 bg-[#FAFCFB] border border-slate-200 hover:border-slate-300 shadow-sm hover:shadow-md transition-all flex flex-col justify-between group">
             <div>
               {/* Header */}
@@ -323,49 +394,65 @@ const WhyZinepsGrid: React.FC = () => {
                   : 'Verzend lokaal of cross-border naar 200+ landen met meer dan 1.000 verzendopties en automatische douanedocumenten.'}
               </p>
 
-              {/* Effective Space Use: 3 Strong Metrics with Subtle Integrated Global Network Graphic */}
-              <div className="relative p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6 overflow-hidden">
-                {/* Subtle abstract network connecting lines */}
-                <svg
-                  className="absolute inset-0 w-full h-full pointer-events-none opacity-25"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 360 90"
-                  fill="none"
-                  preserveAspectRatio="none"
-                >
-                  <path d="M30 45 Q110 15 180 45 T330 45" stroke="#70CAB9" strokeWidth="1.2" strokeDasharray="4 4" />
-                  <path d="M50 65 Q140 75 220 50 T310 35" stroke="#70CAB9" strokeWidth="1.2" strokeDasharray="4 4" />
-                  <circle cx="50" cy="45" r="3.5" fill="#48C293" />
-                  <circle cx="180" cy="45" r="3.5" fill="#48C293" />
-                  <circle cx="310" cy="35" r="3.5" fill="#48C293" />
-                </svg>
-
+              {/* 3 Core Metric Highlights */}
+              <div className="relative p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs mb-3.5 overflow-hidden">
                 <div className="relative z-10 grid grid-cols-3 gap-2 sm:gap-4 text-center">
                   <div>
-                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block">
+                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight block">
                       200+
                     </span>
-                    <span className="text-xs font-semibold text-slate-600 mt-1 block">
+                    <span className="text-[11px] font-semibold text-slate-500 mt-0.5 block">
                       Countries
                     </span>
                   </div>
                   <div className="border-x border-slate-100">
-                    <span className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight block">
+                    <span className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight block">
                       50+
                     </span>
-                    <span className="text-xs font-semibold text-slate-600 mt-1 block">
+                    <span className="text-[11px] font-semibold text-slate-500 mt-0.5 block">
                       Carriers
                     </span>
                   </div>
                   <div>
-                    <span className="text-3xl sm:text-4xl font-extrabold text-[#17332A] tracking-tight block">
+                    <span className="text-2xl sm:text-3xl font-extrabold text-[#17332A] tracking-tight block">
                       99.9%
                     </span>
-                    <span className="text-xs font-semibold text-slate-600 mt-1 block">
+                    <span className="text-[11px] font-semibold text-slate-500 mt-0.5 block">
                       SLA Uptime
                     </span>
                   </div>
                 </div>
+              </div>
+
+              {/* Live Automated Failover Corridors Telemetry: Fills the empty space with authentic SaaS data */}
+              <div className="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs mb-6 space-y-2.5">
+                <div className="flex items-center justify-between text-xs pb-2 border-b border-slate-100">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="font-bold text-slate-800 text-[11px] uppercase tracking-wider">
+                      ACTIVE FAILOVER CORRIDORS
+                    </span>
+                  </div>
+                  <span className="text-[10px] font-mono text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded font-bold">
+                    Mesh Active
+                  </span>
+                </div>
+
+                {[
+                  { route: 'Amsterdam ➔ Berlin Hub', carrier: 'DHL Parcel Connect', latency: '22h', badge: 'Optimal SLA' },
+                  { route: 'Rotterdam ➔ Paris CDG Depot', carrier: 'DPD Classic Europe', latency: '24h', badge: 'Route Cleared' },
+                  { route: 'London ➔ New York JFK', carrier: 'UPS Worldwide Express', latency: '36h', badge: 'Customs Synced' },
+                ].map((lane, i) => (
+                  <div key={i} className="flex items-center justify-between text-xs p-2 rounded-xl bg-slate-50/70 border border-slate-100">
+                    <div>
+                      <span className="font-bold text-slate-900 block text-[11px]">{lane.route}</span>
+                      <span className="text-[10px] text-slate-500">{lane.carrier} · {lane.latency}</span>
+                    </div>
+                    <span className="text-[10px] font-bold text-[#17332A] bg-[#E9F8F2] px-2 py-0.5 rounded border border-[#48C293]/30">
+                      {lane.badge}
+                    </span>
+                  </div>
+                ))}
               </div>
             </div>
 
